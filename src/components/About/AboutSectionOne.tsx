@@ -24,12 +24,12 @@ const AboutSectionOne = () => {
           <div className="-mx-4 flex flex-wrap items-center">
             <div className="w-full px-4 lg:w-1/2">
               <SectionTitle
-                title="Crafted for Startup, SaaS and Business Sites."
-                paragraph="The main ‘thrust’ is to focus on educating attendees on how to best protect highly vulnerable business applications with interactive panel discussions and roundtables."
+                title="Keresahan Anak Muda"
+                paragraph="Berangkat dari keresahan anak muda yang menjalankan hidup ditengah gejolak kehidupan modern, banyak anak muda yang merasakan ketidakpastian dan kegelisahan dalam menghadapi apa yang sering disebut sebagai 'quarter life crisis'. Terutama bagi pemuda muslim yang belum mengenal lebih dalam tentang ajaran Islam, tantangan ini dapat menjadi lebih rumit. Mereka merasa terpisah dari akar spiritualitas dan nilai-nilai yang mendasari keberadaan mereka."
                 mb="44px"
               />
 
-              <div
+              {/* <div
                 className="mb-12 max-w-[570px] lg:mb-0"
                 data-wow-delay=".15s"
               >
@@ -46,7 +46,7 @@ const AboutSectionOne = () => {
                     <List text="Developer friendly" />
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
 
             <div className="w-full px-4 lg:w-1/2">

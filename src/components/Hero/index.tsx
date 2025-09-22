@@ -40,13 +40,13 @@ const Hero = () => {
           <div className="w-full px-4">
           <div className="mx-auto max-w-[1100px] text-center">
           <h1 className="mb-5 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl md:text-5xl">
-          Sempat Resah Kelam Tinggalkan
+          Sempat Kelam Resah Tinggalkan
           </h1>
-          <p className="mb-9 text-base leading-relaxed text-body-color dark:text-body-color-dark sm:text-2xl md:text-3xl">
+          <p className="mb-9 text-base leading-relaxed text-black dark:text-white sm:text-2xl md:text-3xl">
           SKRT !
           Good Vibes, Good Circle
           </p>
-          <p className="mb-6 text-base font-light leading-relaxed text-body-color dark:text-body-color-dark sm:text-lg md:text-lg">
+          <p className="mb-6 text-base font-light leading-relaxed text-black dark:text-white sm:text-lg md:text-lg">
             {/* الْمُؤْمِنُ لِلْمُؤْمِنِ كَالْبُنْيَانِ يَشُدُّ بَعْضُهُ بَعْضًا */}
             {/* <br /> */}
             “Seorang mukmin terhadap mukmin lainnya seperti satu bangunan, sebagiannya menguatkan yang lainnya.”

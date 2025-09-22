@@ -32,14 +32,14 @@ const menuData: Menu[] = [
     submenu: [
       {
         id: 41,
-        title: "About Page",
-        path: "/about",
-        newTab: false,
+        title: "Event Kajian - Trust Is Lam",
+        path: "/",
+        newTab: true,
       },
       {
         id: 42,
-        title: "Contact Page",
-        path: "/contact",
+        title: "Kegiatan Lainnya",
+        path: "/",
         newTab: false,
       },
     ],
