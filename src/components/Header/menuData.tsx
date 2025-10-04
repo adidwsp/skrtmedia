@@ -33,7 +33,7 @@ const menuData: Menu[] = [
       {
         id: 41,
         title: "Event Kajian - Trust Is Lam",
-        path: "/",
+        path: "/trust-islam",
         newTab: true,
       },
       {

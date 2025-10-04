@@ -35,17 +35,20 @@ const Detail = () => {
                 {activeTab === "target" && (
                   <div>
                     <h3 className="text-2xl font-bold mb-4 font-heading text-[#0B6E99]">Untuk Siapa Acara Ini?</h3>
-                    <p className="mb-6">Acara ini dirancang khusus untuk mahasiswa dan pemuda-pemudi di Karawang, namun kami juga sangat terbuka untuk umum yang ingin belajar bersama.</p>
+                    
                     <div className="grid sm:grid-cols-2 gap-6 text-center">
+                      <p >Acara ini dirancang khusus untuk mahasiswa dan pemuda-pemudi di Karawang, namun kami juga sangat terbuka untuk umum yang ingin belajar bersama.</p>
                       <div className="bg-gray-50 p-6 rounded-lg">
+                        
                         <p className="text-5xl mb-2">👥</p>
-                        <p className="font-bold text-lg">Target Peserta</p>
+                        <p className="font-bold text-lg">Peserta</p>
                         <p className="text-gray-600">50 Laki-laki & 50 Perempuan</p>
                       </div>
-                      <div className="bg-gray-50 p-6 rounded-lg">
+                      <div className="bg-gray-50 p-6 rounded-lg justify-items-center">
                         <p className="text-5xl mb-2">📍</p>
                         <p className="font-bold text-lg">Lokasi Acara</p>
                         <p className="text-gray-600">Warung Desa (Wardes), Karawang (Dekat Kampus UBP)</p>
+                        <iframe className="mt-4 p-6 justify-center rounded-sm lg:w-1xl md:w-10 sm:w-50" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3950.0536791327618!2d107.29678807499974!3d-6.323437561876199!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6977d2d6dcd971%3A0x16d632cabecff936!2sRM.%20Waroeng%20Desa!5e1!3m2!1sid!2sid!4v1759124829794!5m2!1sid!2sid"  loading="lazy"></iframe>
                       </div>
                     </div>
                   </div>
@@ -65,10 +68,10 @@ const Detail = () => {
                       </div>
                       <div className="bg-[#0EA5E9]/10 p-6 rounded-lg border-2 border-dashed border-[#0EA5E9]">
                         <h4 className="text-lg font-semibold mb-2">Investasi Ilmu</h4>
-                        <p className="text-3xl font-bold mb-4">Rp [Jumlah HTM]</p>
+                        <p className="text-3xl font-bold mb-4">FREE</p>
                         <p className="font-semibold mb-2">Benefit:</p>
                         <ul className="list-disc list-inside text-gray-700">
-                          <li>Snack & Makanan</li>
+                          <li>Snack & Minuman</li>
                           <li>Ilmu Bermanfaat</li>
                           <li>Relasi Baru</li>
                         </ul>

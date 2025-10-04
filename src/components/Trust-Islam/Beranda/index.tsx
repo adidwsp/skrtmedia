@@ -32,13 +32,13 @@ const Beranda = ({ center = true }) => {
   return (
     <>
       {/* Beranda */}
-        <section id="beranda" className="min-h-screen flex items-center bg-cover bg-center" style={{ backgroundImage: `linear-gradient(rgba(247,251,255,0.8), rgba(247,251,255,1)), url('https://placehold.co/1920x1080/E6F9FF/0B6E99?text=Kajian+Pemuda')` }}>
+        <section id="beranda" className="min-h-screen flex items-center bg-cover bg-center" style={{ backgroundImage: `linear-gradient(rgba(247,251,255,0.85), rgba(247,251,255,1)), url('https://placehold.co/1920x1080/E6F9FF/0B6E99?text=SKRT+MEDIA')` }}>
           <div className="container mx-auto px-0 text-center">
             {/* <h1 className="text-5xl md:text-7xl font-bold text-[#0F172A] font-heading">TRUST</h1>
             <h1 className="text-5xl md:text-7xl font-bold text-[#969696] font-heading">IS<span className="line-through decoration-3 decoration-[#ff0000]">SUE</span></h1>
             <h1 className="text-6xl md:text-8xl font-bold text-[#0B6E99] mt-2 font-heading">ISLAM</h1> */}
             <div className={`${center ? "flex items-center justify-center" : ""}`}>
-              <div className="flex items-start md:items-top gap-6 md:gap-10 px-6">
+              <div className="flex items-start md:items-top gap-6 md:gap-5 sm:gap-1 px-6">
               {/* TRUST */}
                 <div className="tracking-wide">
                   <span className="block text-4xl md:text-5xl lg:text-6xl font-semibold" style={{ fontFamily: "Poppins, Inter, system-ui" }}>
@@ -75,7 +75,7 @@ const Beranda = ({ center = true }) => {
                   {/* Blue LAM underneath */}
                   <div className="mt-2 text-left">
                     <span
-                    className="block font-extrabold text-4xl md:text-6xl lg:text-7xl text-[#0EA5E9]"
+                    className="block font-extrabold text-6xl md:text-7xl lg:text-8xl text-[#0EA5E9]"
                     style={{ fontFamily: "Poppins, Inter, system-ui" }}
                     >
                     LAM
@@ -84,8 +84,8 @@ const Beranda = ({ center = true }) => {
                 </div>
               </div>
             </div>
-            <p className="text-lg md:text-xl mt-6 max-w-2xl mx-auto text-[#0F172A]">Ketika logika dan iman seolah tak sejalan, ke mana seharusnya kita percaya? Temukan kembali keyakinan bahwa Islam adalah solusi sejati dari setiap keresahan.</p>
-            <a href="#detail" className="mt-8 inline-block bg-[#0EA5E9] text-white font-bold py-3 px-8 rounded-full text-lg hover:opacity-90 transition-transform transform hover:-translate-y-1">Lihat Detail & Daftar</a>
+            <p className="text-lg md:text-xl sm:mh-10 mt-6 max-w-2xl mx-auto text-[#0F172A]">Ketika logika dan iman seolah tak sejalan, ke mana seharusnya kita percaya? Temukan kembali keyakinan bahwa Islam adalah solusi sejati dari setiap keresahan.</p>
+            <a href="#detail" className="mt-20 inline-block bg-[#0EA5E9] text-white font-bold py-3 px-8 rounded-full text-lg hover:opacity-90 transition-transform transform hover:-translate-y-1">Lihat Detail & Daftar</a>
           </div>
         </section>
     </>

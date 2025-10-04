@@ -1,4 +1,3 @@
-import ScrollUp from "@/components/Common/ScrollUp";
 import Beranda from "@/components/Trust-Islam/Beranda";
 import Detail from "@/components/Trust-Islam/Detail";
 import Tentang from "@/components/Trust-Islam/Tentang";
@@ -14,7 +13,7 @@ export default function Home() {
   return (
     <>
     <main>
-      <ScrollUp />
+      {/* <ScrollUp /> */}
       <Beranda />
       <Tentang />
       <Detail />
