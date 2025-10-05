@@ -15,27 +15,10 @@ export default function RootLayout({
 }) {
   return (
     <>
-    {/* <html suppressHydrationWarning lang="en"> */}
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.js. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
-      <head />
-
-      <body className={`bg-[#FCFCFC] dark:bg-black ${inter.className}`}>
-        <Providers>
-          <div className="antialiased">
-            {/* <TrustHeader /> */}
-            {children}
-            {/* <TrustFooter /> */}
-            {/* <ScrollToTop /> */}
-          </div>
-        </Providers>
-      </body>
-    {/* </html> */}
+      <div className="antialiased">
+        {children}
+      </div>
     </>
   );
 }
-
-import { Providers } from "./providers";
 

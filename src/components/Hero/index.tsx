@@ -1,4 +1,6 @@
 import Link from "next/link";
+import CircularGallery from './CircularGallery'
+
 
 const portraits = [
   {
@@ -39,7 +41,7 @@ const Hero = () => {
           <div className="-mx-4 flex flex-wrap">
           <div className="w-full px-4">
           <div className="mx-auto max-w-[1100px] text-center">
-          <h1 className="mb-5 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl md:text-5xl">
+          <h1 className="mb-5 text-3xl text-shadow-2xs text-shadow-sky-300 font-bold leading-tight text-primary dark:text-white sm:text-4xl md:text-5xl">
           Sempat Kelam Resah Tinggalkan
           </h1>
           <p className="mb-9 text-base leading-relaxed text-black dark:text-white sm:text-2xl md:text-3xl">
@@ -69,6 +71,10 @@ const Hero = () => {
             />
             </div>
             ))}
+          </div>
+
+          <div style={{ height: '600px', position: 'relative' }}>
+            <CircularGallery bend={3} textColor="primary" borderRadius={0.05} scrollEase={0.02}/>
           </div>
 
           {/* Link ke dokumentasi acara */}
