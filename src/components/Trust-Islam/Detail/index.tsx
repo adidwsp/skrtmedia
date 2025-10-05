@@ -105,7 +105,7 @@ const Detail = () => {
                       <div>
                         <h4 className="text-lg font-semibold mb-4">Langkah Registrasi:</h4>
                         <ol className="space-y-4">
-                          <li className="flex items-start"><span className="bg-[#0EA5E9] text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-4">1</span><span>Isi formulir pendaftaran melalui tombol "Order Tiket".</span></li>
+                          <li className="flex items-start"><span className="bg-[#0EA5E9] text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-4">1</span><span>Isi formulir pendaftaran melalui tombol Order Tiket.</span></li>
                           <li className="flex items-start"><span className="bg-[#0EA5E9] text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-4">2</span><span>Lakukan pembayaran investasi ke rekening yang tertera.</span></li>
                           <li className="flex items-start"><span className="bg-[#0EA5E9] text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-4">3</span><span>Kirim bukti transfer untuk konfirmasi dari admin.</span></li>
                         </ol>
