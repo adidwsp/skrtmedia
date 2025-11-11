@@ -85,7 +85,7 @@ const Beranda = ({ center = true }) => {
               </div>
             </div>
             <p className="text-lg md:text-xl sm:mh-10 mt-6 max-w-2xl mx-auto text-[#0F172A]">Ketika logika dan iman seolah tak sejalan, ke mana seharusnya kita percaya? Temukan kembali keyakinan bahwa Islam adalah solusi sejati dari setiap keresahan.</p>
-            <a href="#detail" className="mt-20 inline-block bg-[#0EA5E9] text-white font-bold py-3 px-8 rounded-full text-lg hover:opacity-90 transition-transform transform hover:-translate-y-1">Lihat Detail & Daftar</a>
+            <a href="#detail-acara" className="mt-20 inline-block bg-[#0EA5E9] text-white font-bold py-3 px-8 rounded-full text-lg hover:opacity-90 transition-transform transform hover:-translate-y-1">Lihat Detail & Daftar</a>
           </div>
         </section>
     </>

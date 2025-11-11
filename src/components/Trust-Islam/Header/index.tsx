@@ -13,6 +13,10 @@ const Header = () => {
     setNavbarOpen(!navbarOpen);
   };
 
+  const navbarCloseHandler = () => {
+    setNavbarOpen(false);
+  };
+
   // Sticky Navbar
   const [sticky, setSticky] = useState(false);
   const handleStickyNavbar = () => {
@@ -115,6 +119,7 @@ const Header = () => {
                                 ? "text-primary dark:text-white"
                                 : "text-dark hover:text-primary dark:text-white/70 dark:hover:text-white"
                             }`}
+                            onClick={navbarCloseHandler}
                           >
                             {menuItem.title}
                           </Link>
@@ -166,14 +171,11 @@ const Header = () => {
                   Sign In
                 </Link> */}
                 <Link
-                  href="/contact"
+                  href="/trust-islam/ticket"
                   className="ease-in-up shadow-btn hover:shadow-btn-hover bg-primary hover:bg-primary/90 hidden rounded-xs px-8 py-3 text-base font-medium text-white transition duration-300 md:block md:px-9 lg:px-6 xl:px-9"
                 >
-                  Kontak
+                  Tiket Anda
                 </Link>
-                <div>
-                  <ThemeToggler />
-                </div>
               </div>
             </div>
           </div>

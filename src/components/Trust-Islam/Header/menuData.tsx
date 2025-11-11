@@ -4,45 +4,26 @@ const menuData: Menu[] = [
   {
     id: 1,
     title: "Beranda",
-    path: "/#beranda",
+    path: "/trust-islam/#",
     newTab: false,
   },
   {
     id: 2,
     title: "Tentang Acara",
-    path: "/#tentang",
-    newTab: false,
-  },
-  {
-    id: 33,
-    title: "Detail Acara",
-    path: "/#detail",
+    path: "#tentang-acara",
     newTab: false,
   },
   {
     id: 3,
-    title: "Kontak",
-    path: "/contact",
+    title: "Detail Acara",
+    path: "/trust-islam/#detail-acara",
     newTab: false,
   },
   {
     id: 4,
-    title: "Kegiatan",
+    title: "Tiket Anda",
+    path: "/trust-islam/ticket",
     newTab: false,
-    submenu: [
-      {
-        id: 41,
-        title: "Event Kajian - Trust Is Lam",
-        path: "/",
-        newTab: true,
-      },
-      {
-        id: 42,
-        title: "Kegiatan Lainnya",
-        path: "/",
-        newTab: false,
-      },
-    ],
   },
 ];
 export default menuData;
