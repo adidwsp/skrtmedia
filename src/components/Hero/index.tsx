@@ -1,5 +1,6 @@
 import Link from "next/link";
 import CircularGallery from './CircularGallery'
+import HighlightEvent from "./HilightEvent";
 
 
 const portraits = [
@@ -56,9 +57,11 @@ const Hero = () => {
             (HR Bukhari-Muslim).
           </p>
 
+          <HighlightEvent />
+
 
           {/* Barisan gambar horizontal */}
-          <div className="flex items-center justify-center gap-6 md:gap-8 lg:gap-10 py-6">
+          {/* <div className="flex items-center justify-center gap-6 md:gap-8 lg:gap-10 py-6">
           {portraits.map((p, idx) => (
           <div
             key={idx}
@@ -71,7 +74,7 @@ const Hero = () => {
             />
             </div>
             ))}
-          </div>
+          </div> */}
 
           <div style={{ height: '600px', position: 'relative' }}>
             <CircularGallery bend={2} textColor="primary" borderRadius={0.05} scrollEase={0.02}/>

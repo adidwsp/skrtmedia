@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Button, TabItem, Tabs } from "flowbite-react";
 import { HiLocationMarker, HiAdjustments, HiClipboardList, HiUsers } from "react-icons/hi";
 import { MdDashboard } from "react-icons/md";
@@ -299,7 +300,7 @@ const Detail: React.FC = () => {
                   {/* ... lokasi content tetap sama ... */}
                   <div>
                     <h3 className="text-2xl font-bold mb-4 font-heading text-[#0B6E99]">Untuk Siapa Acara Ini?</h3>
-                    <p className="mb-6">Acara ini dirancang khusus untuk mahasiswa dan pemuda-pemudi di Karawang, namun kami juga sangat terbuka untuk umum yang ingin belajar bersama.</p>
+                    <p className="mb-6">Acara ini dirancang khusus untuk pemuda-pemudi di Karawang baik dari mahasiswa maupun umum yang mempunyai semangat untuk belajar bersama dan memperbaiki diri.</p>
                     <div className="grid sm:grid-cols-2 gap-6 text-center mb-6">
                       <div className="bg-gray-50 p-6 rounded-lg justify-items-center">
                         <HiUsers size={80} color="#0EA5E9" />
@@ -335,7 +336,7 @@ const Detail: React.FC = () => {
                           </li>
                           <li className="flex items-start">
                             <span className="bg-[#0EA5E9] text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-4">2</span>
-                            <span>Masukkan nominal infaq (boleh 0) dan unggah bukti jika membayar.</span>
+                            <span>Masukkan nominal infaq terbaik dan unggah bukti pembayaran.</span>
                           </li>
                           <li className="flex items-start">
                             <span className="bg-[#0EA5E9] text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-4">3</span>
@@ -471,14 +472,13 @@ const Detail: React.FC = () => {
                         </label>
                       </div>
 
-                      <div className="flex items-center gap-6">
+                      <div className="items-center gap-6">
                         <label className="inline-flex items-center gap-3">
                           <input type="checkbox" name="is_student" checked={form.is_student} onChange={handleChange} />
                           <span>Saya mahasiswa</span>
                         </label>
                         {form.is_student && (
                           <label className="flex-1">
-                            <span className="text-sm font-medium">Universitas</span>
                             <div className="mt-1 relative">
                               <FaUniversity className="absolute left-3 top-3 text-gray-400" />
                               <input name="university" value={form.university} onChange={handleChange} placeholder="Nama Universitas" className="block w-full pl-10 pr-3 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0EA5E9]" />
@@ -567,8 +567,10 @@ const Detail: React.FC = () => {
                 </select>
 
                 <div className="mt-3 p-3 bg-gray-50 rounded">
-                  <div className="font-semibold">Rekening Bank Jago</div>
-                  <div className="text-sm text-gray-700">Nama: Adi Dwi Saputra | Nomor: 1234-5678-9012</div>
+                  <div className="font-semibold text-3xl">506693547160</div>
+                  <Image src="/images/component/logo-jago.png" alt="Bank Jago Logo" width={100} height={40} />
+                  <br/>
+                  <div className="text-sm text-gray-700">Nama: Adi Dwi Saputra</div>
                   <div className="text-xs text-gray-500 mt-1">Transfer ke atas nama & nomor di atas.</div>
                 </div>
               </div>

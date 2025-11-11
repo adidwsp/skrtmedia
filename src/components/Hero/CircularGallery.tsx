@@ -481,27 +481,27 @@ class App {
     const defaultItems = [
       {
         image: `/images/hero/portrait1.JPG`,
-        text: 'Bridge'
+        text: 'Berbagi Bersama Anak Yatim'
       },
       {
         image: `/images/hero/portrait2.JPG`,
-        text: 'Desk Setup'
+        text: 'THR Anak Yatim'
       },
       {
         image: `/images/hero/portrait1.JPG`,
-        text: 'Waterfall'
+        text: 'Berbagi Bersama Anak Yatim'
       },
       {
         image: `/images/hero/portrait2.JPG`,
-        text: 'Strawberries'
+        text: 'THR Anak Yatim'
       },
       {
         image: `/images/hero/landscape1.JPG`,
-        text: 'Deep Diving'
+        text: 'Event Ngopi'
       },
       {
         image: `/images/hero/portrait2.JPG`,
-        text: 'Train Track'
+        text: 'THR Anak Yatim'
       },
       {
         image: `/images/hero/landscape1.JPG`,
@@ -509,23 +509,23 @@ class App {
       },
       {
         image: `/images/hero/portrait2.JPG`,
-        text: 'Blurry Lights'
+        text: 'THR Anak Yatim'
       },
       {
         image: `/images/hero/portrait1.JPG`,
-        text: 'New York'
+        text: 'Berbagi Bersama Anak Yatim'
       },
       {
         image: `/images/hero/portrait2.JPG`,
-        text: 'Good Boy'
+        text: 'THR Anak Yatim'
       },
       {
         image: `/images/hero/portrait2.JPG`,
-        text: 'Coastline'
+        text: 'THR Anak Yatim'
       },
       {
         image: `/images/hero/portrait1.JPG`,
-        text: 'Palm Trees'
+        text: 'Berbagi Bersama Anak Yatim'
       }
     ];
     const galleryItems = items && items.length ? items : defaultItems;
