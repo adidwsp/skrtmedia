@@ -5,10 +5,11 @@ import Image from "next/image";
 import { Button, TabItem, Tabs } from "flowbite-react";
 import { HiLocationMarker, HiAdjustments, HiClipboardList, HiUsers } from "react-icons/hi";
 import { MdDashboard } from "react-icons/md";
-import { FaUniversity, FaPhone, FaEnvelope, FaUser, FaUpload } from "react-icons/fa";
+import { FaUniversity, FaPhone, FaEnvelope, FaUser, FaUpload, FaWhatsapp } from "react-icons/fa";
 import { createClient } from "src/utils/supabase/client";
 
 const supabase = createClient();
+
 
 /* ---------- Types ---------- */
 interface FormState {
@@ -183,11 +184,11 @@ const Detail: React.FC = () => {
 
   /* Finalize registration: upload proof if needed, then insert ticket */
   async function confirmDonationAndRegister() {
-    // donation can be zero
-    if (donationAmount > 0 && !proofFile) {
-      setToast({ type: "error", message: "Jika memberi donasi lebih dari 0, unggah bukti transfer." });
-      return;
-    }
+    // donation can be zero - MASIH EROR GAESS
+    // if (donationAmount > 0 && !proofFile) {
+    //   setToast({ type: "error", message: "Jika memberi donasi lebih dari 0, unggah bukti transfer." });
+    //   return;
+    // }
     setLoading(true);
     setToast(null);
 
@@ -284,6 +285,21 @@ const Detail: React.FC = () => {
     .animate-slide { animation: slide .22s ease; }
   `;
 
+
+  {/* ==== Konfigurasi kontak & grup (ganti sesuai kebutuhan) ==== */}
+  {/* Nomor WA harus dalam format internasional tanpa +, contoh: 6281234567890 */}
+  const MALE_CONTACT = "6289647011970";        // kamu / kontak laki-laki
+  const FEMALE_CONTACT = "6281210736312";      // admin perempuan
+  const MALE_GROUP_LINK = "https://chat.whatsapp.com/JLte0VN7DJfLGnJvR1IVbL";
+  const FEMALE_GROUP_LINK = "https://chat.whatsapp.com/HJ4gFRLlAKjGRNNxOPPcLj";
+  const BANK_INFO = {
+    bank: "Bank Jago",
+    accountName: "Adi Dwi Saputra",
+    accountNumber: "506693547160"
+  };
+  {/* ======================================================= */}
+
+  
   /* ---------- JSX (UI) ---------- */
   return (
     <>
@@ -541,7 +557,7 @@ const Detail: React.FC = () => {
         <div className="fixed inset-0 z-[10000] flex items-center justify-center bg-black/50 p-4">
           <div className="bg-white rounded-xl w-full max-w-lg p-6 shadow-2xl max-h-[90vh] overflow-y-auto">
             <div className="flex justify-between items-center mb-4">
-              <h3 className="text-lg font-semibold">Tambahkan Nominal Infaq (opsional)</h3>
+              <h3 className="text-lg font-semibold">Tambahkan Nominal Infaq</h3>
               <button onClick={() => { setShowDonationDialog(false); setProofFile(null); }} className="text-gray-500">✕</button>
             </div>
 
@@ -556,7 +572,7 @@ const Detail: React.FC = () => {
                   onChange={(e) => setDonationAmount(Number(e.target.value || 0))}
                   className="mt-1 block w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0EA5E9]"
                 />
-                <p className="text-xs text-gray-500 mt-1">Boleh diisi 0 jika tidak ingin berdonasi.</p>
+                {/* <p className="text-xs text-gray-500 mt-1">Boleh diisi 0 jika tidak ingin berdonasi.</p> */}
               </div>
 
               <div>
@@ -575,7 +591,7 @@ const Detail: React.FC = () => {
                 </div>
               </div>
 
-              <div>
+              {/* <div>
                 <label className="text-sm font-medium block">Unggah Bukti Transfer (jika memberi infaq {'>'} 0)</label>
                 <label className="mt-1 flex items-center gap-2 cursor-pointer text-sm text-gray-700 bg-gray-100 px-3 py-2 rounded">
                   <FaUpload />
@@ -584,7 +600,7 @@ const Detail: React.FC = () => {
                 </label>
                 {donationAmount > 0 && !proofFile && <p className="text-sm text-red-500 mt-1">Bukti transfer wajib jika nominal {'>'} 0.</p>}
                 {proofFile && <p className="text-sm text-green-700 mt-1">File siap diunggah: {proofFile.name}</p>}
-              </div>
+              </div> */}
 
               <div className="flex justify-end gap-3">
                 <button type="button" className="px-4 py-2 rounded border" onClick={() => { setShowDonationDialog(false); }}>Kembali</button>
@@ -609,24 +625,105 @@ const Detail: React.FC = () => {
               <button onClick={() => setSuccessTicket(null)} className="text-gray-500">✕</button>
             </div>
 
+            
+
             <div className="space-y-3">
               <p className="text-sm text-gray-600">Nomor tiket Anda:</p>
+
               <div className="flex items-center justify-between gap-3 bg-gray-100 px-4 py-3 rounded">
                 <div className="font-mono font-semibold text-lg">{successTicket.ticket_number}</div>
                 <div className="flex gap-2">
                   <button onClick={copyTicket} className="px-3 py-1 rounded bg-[#0EA5E9] text-white">Salin</button>
-                  <button onClick={() => setToast({ type: "info", message: "Fitur lihat tiket belum tersedia" })} className="px-3 py-1 rounded border">Lihat</button>
+                  <button
+                    onClick={() => window.open(`/trust-islam/tickets/${successTicket.ticket_number}`, "_blank")}
+                    className="px-3 py-1 rounded border"
+                  >
+                    Lihat
+                  </button>
                 </div>
               </div>
 
-              <p className="text-sm text-gray-500">Simpan nomor tiket untuk konfirmasi pembayaran dan keperluan admin.</p>
-              <div className="text-right">
-                <button onClick={() => setSuccessTicket(null)} className="px-4 py-2 rounded bg-gray-100">Tutup</button>
+              <div className="text-sm text-gray-700">
+                <p>Simpan nomor tiket untuk konfirmasi pembayaran dan keperluan admin.</p>
+
+                {/* ambil data dari successTicket.data jika ada */}
+                {(() => {
+                  const d = successTicket.data ?? {};
+                  // gender bisa 'Laki-laki', 'Perempuan', 'male', 'female', dsb. normalisasi:
+                  const rawGender = (d.gender ?? d.sex ?? d.jenis_kelamin ?? "").toString().toLowerCase();
+                  const isMale = /^(l|m|male|laki)/i.test(rawGender);
+                  const contactNumber = isMale ? MALE_CONTACT : FEMALE_CONTACT;
+                  const groupLink = isMale ? MALE_GROUP_LINK : FEMALE_GROUP_LINK;
+
+                  // buat template pesan WA
+                  const name = d.name ?? d.nama ?? "";
+                  const donation = typeof d.donation_amount === "number" ? d.donation_amount : d.donation_amount ?? "";
+                  const prefillMessage = encodeURIComponent(
+                    `Assalamu'alaikum,\nSaya sudah mendaftar event. Berikut detail:\nNama: ${name}\nNomor tiket: ${successTicket.ticket_number}\nNominal infaq: Rp ${donation || 0}\nMohon konfirmasi dan petunjuk selanjutnya.`
+                  );
+
+                  const waUrl = `https://wa.me/${contactNumber}?text=${prefillMessage}`;
+
+                  return (
+                    <>
+                      <div className="mt-3 p-3 bg-gray-50 rounded border border-gray-100">
+                        <div className="font-medium">Petunjuk Konfirmasi</div>
+                        <ol className="text-sm list-decimal list-inside mt-2 space-y-1 text-gray-600">
+                          <li>Silakan transfer sesuai nominal infaq ke:</li>
+                          <li className="mt-1 font-semibold">{BANK_INFO.bank} — {BANK_INFO.accountNumber} (a.n. {BANK_INFO.accountName})</li>
+                          <li>Kirim bukti transfer via WhatsApp ke kontak yang tersedia di bawah.</li>
+                          <li>Jika tidak melakukan infaq, cukup kirim pesan konfirmasi tanpa bukti.</li>
+                        </ol>
+                      </div>
+
+                      <div className="mt-3 grid grid-cols-1 gap-2">
+                        <a
+                          href={waUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="w-full inline-flex items-center justify-center gap-2 px-4 py-2 rounded bg-green-600 text-white font-semibold hover:bg-green-700"
+                          onClick={() => setToast({ type: "info", message: "Membuka WhatsApp..." })}
+                          
+                        >
+                          {/* Hubungi WA {isMale ? "Kontak Laki-laki" : "Kontak Perempuan"} */}
+                          <span className="icon">
+                            <FaWhatsapp />
+                          </span>
+                          Hubungi WA Admin
+                        </a>
+
+                        <a
+                          href={groupLink}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="w-full inline-flex items-center justify-center gap-2 px-4 py-2 rounded border"
+                          onClick={() => setToast({ type: "info", message: "Membuka Group WhatsApp..." })}
+                        >
+                          {/* Gabung Group WhatsApp {isMale ? "Laki-laki" : "Perempuan"} */}
+                          Gabung Group WhatsApp Peserta
+                        </a>
+                        <hr/>
+                        <a
+                          href={`/tickets/${successTicket.ticket_number}`}
+                          className="px-4 py-2 rounded bg-[#0EA5E9] text-white text-center"
+                        >
+                          Buka Halaman Konfirmasi
+                        </a>
+                      </div>
+                    </>
+                  );
+                })()}
               </div>
+
+              {/* <div className="text-right"> */}
+                {/* <button onClick={() => setSuccessTicket(null)} className="px-4 py-2 rounded bg-gray-100">Tutup</button> */}
+                {/* show modal with button: */}
+              {/* </div> */}
             </div>
           </div>
         </div>
       )}
+
     </>
   );
 };
