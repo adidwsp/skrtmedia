@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Button, TabItem, Tabs } from "flowbite-react";
 import { HiLocationMarker, HiAdjustments, HiClipboardList, HiUsers } from "react-icons/hi";
 import { MdDashboard } from "react-icons/md";
-import { FaUniversity, FaPhone, FaEnvelope, FaUser, FaUpload, FaWhatsapp } from "react-icons/fa";
+import { FaUniversity, FaPhone, FaEnvelope, FaUser, FaUpload, FaWhatsapp, FaCalendar, FaClock, FaTicketAlt, FaUserFriends } from "react-icons/fa";
 import { createClient } from "src/utils/supabase/client";
 
 const supabase = createClient();
@@ -66,7 +66,8 @@ const Detail: React.FC = () => {
   const [successTicket, setSuccessTicket] = useState<SuccessTicket>(null);
 
   /* donation state */
-  const [donationAmount, setDonationAmount] = useState<number>(0);
+  // const [donationAmount, setDonationAmount] = useState<number>(0);
+  const [donationAmount, setDonationAmount] = useState<string>("");
   const [bank, setBank] = useState<string>("Bank Jago");
   const [proofFile, setProofFile] = useState<File | null>(null);
   const [uploadingProof, setUploadingProof] = useState<boolean>(false);
@@ -105,6 +106,29 @@ const Detail: React.FC = () => {
     setForm((s) => ({ ...s, [name]: value } as FormState));
     setErrors((prev) => ({ ...prev, [name]: undefined }));
   }
+
+  const formatRupiah = (value: string): string => {
+  // Hapus semua karakter non-digit
+  const cleanValue = value.replace(/\D/g, '');
+  
+  // Jika kosong, return string kosong
+  if (cleanValue === '') return '';
+  
+  // Format dengan titik sebagai pemisah ribuan
+  return cleanValue.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  };
+
+  const handleDonationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const rawValue = e.target.value;
+    const formattedValue = formatRupiah(rawValue);
+    setDonationAmount(formattedValue);
+  };
+
+  // Untuk mendapatkan nilai numeric (untuk submit)
+  const getNumericValue = (): number => {
+    if (!donationAmount) return 0;
+    return parseInt(donationAmount.replace(/\./g, '')) || 0;
+  };
 
   function validateAll(): Errors {
     const newErr: Errors = {};
@@ -189,6 +213,9 @@ const Detail: React.FC = () => {
     //   setToast({ type: "error", message: "Jika memberi donasi lebih dari 0, unggah bukti transfer." });
     //   return;
     // }
+
+    const numericAmount = getNumericValue();
+
     setLoading(true);
     setToast(null);
 
@@ -198,16 +225,17 @@ const Detail: React.FC = () => {
         ? (crypto as any).randomUUID().slice(0, 8)
         : Math.random().toString(36).slice(2, 10));
 
+
     // upload proof if donation > 0
     let proof_path: string | null = null;
-    if (donationAmount > 0 && proofFile) {
-      const p = await uploadProofFile(ticketNumber);
-      if (!p) {
-        setLoading(false);
-        return; // upload failed; toast already shown
-      }
-      proof_path = p;
-    }
+    // if (donationAmount > 0 && proofFile) {
+    //   const p = await uploadProofFile(ticketNumber);
+    //   if (!p) {
+    //     setLoading(false);
+    //     return; // upload failed; toast already shown
+    //   }
+    //   proof_path = p;
+    // }
 
     const payload = {
       ticket_number: ticketNumber,
@@ -220,7 +248,7 @@ const Detail: React.FC = () => {
       email: form.email,
       with_child: form.with_child,
       num_of_children: form.with_child ? Number(form.num_of_children || 0) : 0,
-      donation_amount: donationAmount,
+      donation_amount: numericAmount,
       donation_bank: bank,
       donation_proof_path: proof_path,
       created_at: new Date().toISOString(),
@@ -255,7 +283,7 @@ const Detail: React.FC = () => {
         with_child: false,
         num_of_children: 0,
       });
-      setDonationAmount(0);
+      // setDonationAmount(0);
       setProofFile(null);
 
       // Optional: send email with ticket & message
@@ -313,30 +341,72 @@ const Detail: React.FC = () => {
             <div className="rounded-lg bg-white p-8 shadow-lg">
               <Tabs className="justify-around" aria-label="Default tabs" variant="default">
                 <TabItem active title="Lokasi" icon={HiLocationMarker}>
-                  {/* ... lokasi content tetap sama ... */}
-                  <div>
-                    <h3 className="text-2xl font-bold mb-4 font-heading text-[#0B6E99]">Untuk Siapa Acara Ini?</h3>
-                    <p className="mb-6">Acara ini dirancang khusus untuk pemuda-pemudi di Karawang baik dari mahasiswa maupun umum yang mempunyai semangat untuk belajar bersama dan memperbaiki diri.</p>
-                    <div className="grid sm:grid-cols-2 gap-6 text-center mb-6">
-                      <div className="bg-gray-50 p-6 rounded-lg justify-items-center">
-                        <HiUsers size={80} color="#0EA5E9" />
-                        <p className="font-bold text-lg">Target Peserta</p>
-                        <p className="text-gray-600">50 Laki-laki & 50 Perempuan</p>
+                    <div>
+                      <h3 className="text-2xl font-bold mb-4 font-heading text-[#0B6E99]">Untuk Siapa Acara Ini?</h3>
+                      <p className="mb-6">Acara ini dirancang khusus untuk pemuda-pemudi di Karawang baik dari mahasiswa maupun umum yang mempunyai semangat untuk belajar bersama dan memperbaiki diri.</p>
+
+                      {/* Informasi Waktu - Minimalis */}
+                      <div className="mb-6 bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
+                        <div className="flex flex-col xxs: md:flex-row items-center justify-between">
+                          <div className="xs:flex items-center mb-4 md:mb-0">
+                            <div className="bg-[#0EA5E9] text-white p-3 rounded-xl mr-4 justify-self-center">
+                              <FaCalendar className="w-6 h-6" />
+                            </div>
+                            <div>
+                              <div className="text-lg font-bold text-gray-800">Minggu, 7 Desember 2025</div>
+                              <div className="text-gray-600 flex items-center">
+                                <FaClock className="w-4 h-4 mr-1" />
+                                14:00 - 18:00 WIB
+                              </div>
+                            </div>
+                          </div>
+                          <div className="bg-green-100 text-green-800 px-4 py-2 rounded-full font-semibold">
+                            Akan Datang
+                          </div>
+                        </div>
                       </div>
-                      <div className="bg-gray-50 p-6 rounded-lg justify-items-center">
-                        <HiLocationMarker size={80} color="#0EA5E9" />
-                        <p className="font-bold text-lg">Lokasi Acara</p>
-                        <p className="text-gray-600">Warung Desa (Wardes), Karawang (Dekat Kampus UBP)</p>
+
+                      {/* Grid 3 Kolom */}
+                      <div className="grid sm:grid-cols-3 gap-6 text-center mb-6">
+                        <div className="bg-gray-50 p-6 rounded-lg transition-all duration-300 hover:shadow-lg justify-items-center">
+                          <FaCalendar size={60} color="#0EA5E9" />
+                          <p className="font-bold text-lg sm:text-sm md:text-lg mt-3">Waktu Acara</p>
+                          <p className="text-gray-600 sm:text-sm sm:mt-2 md:text-base">Minggu, 7 Des 2025</p>
+                          <p className="text-sm text-gray-500 sm:text-sm sm:mt-2 md:text-base">14:00 - 18:00 WIB</p>
+                        </div>
+                        <div className="bg-gray-50 p-6 rounded-lg transition-all duration-300 hover:shadow-lg justify-items-center">
+                          <HiUsers size={60} color="#0EA5E9" />
+                          <p className="font-bold text-lg sm:text-sm md:text-lg mt-3">Target Peserta</p>
+                          <p className="text-gray-600 sm:text-sm sm:mt-2 md:text-base">50 Laki-laki & 50 Perempuan</p>
+                        </div>
+                        <div className="bg-gray-50 p-6 rounded-lg transition-all duration-300 hover:shadow-lg justify-items-center">
+                          <HiLocationMarker size={60} color="#0EA5E9" />
+                          <p className="font-bold text-lg sm:text-sm md:text-lg mt-3">Lokasi Acara</p>
+                          <p className="text-gray-600 sm:text-sm sm:mt-2 md:text-base">Warung Desa (Wardes), Karawang</p>
+                        </div>
+                      </div>
+
+                      {/* Peta dan Tombol */}
+                      <div className="w-full h-64 md:h-96 rounded overflow-hidden shadow-lg mb-6">
+                        <iframe 
+                          title="Lokasi Warung Desa Karawang" 
+                          src="https://www.google.com/maps?q=Warung+Desa+Karawang&output=embed" 
+                          className="w-full h-full border-0" 
+                          allowFullScreen 
+                          loading="lazy" 
+                        />
+                      </div>
+
+                      <div className="text-center">
+                        <button 
+                          onClick={() => setShowForm(true)} 
+                          className="inline-block bg-[#0EA5E9] hover:bg-[#0ca6dc] transition text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl"
+                        >
+                          Order Tiket Sekarang
+                        </button>
                       </div>
                     </div>
-                    <div className="w-full h-64 md:h-96 rounded overflow-hidden shadow">
-                      <iframe title="Lokasi Warung Desa Karawang" src={`https://www.google.com/maps?q=Warung+Desa+Karawang&output=embed`} className="w-full h-full border-0" allowFullScreen loading="lazy" />
-                    </div>
-                    <div className="mt-6 text-center">
-                      <button onClick={() => setShowForm(true)} className="inline-block bg-[#0EA5E9] hover:bg-[#0ca6dc] transition text-white px-6 py-3 rounded-lg font-semibold shadow-md">Order Tiket</button>
-                    </div>
-                  </div>
-                </TabItem>
+                  </TabItem>
 
                 <TabItem title="Pendaftaran" icon={HiClipboardList}>
                   {/* pendaftaran content tetap sama */}
@@ -371,7 +441,7 @@ const Detail: React.FC = () => {
                           <li>Relasi Baru</li>
                         </ul>
                         <div className="mt-6 text-center">
-                          <button onClick={() => setShowForm(true)} className="inline-block bg-[#0EA5E9] hover:bg-[#0ca6dc] transition text-white px-5 py-2 rounded-lg font-semibold shadow-sm">Order Tiket</button>
+                          <Button onClick={() => setShowForm(true)} className="inline-block bg-[#0EA5E9] hover:bg-[#0ca6dc] transition text-white px-5 py-2 rounded-lg font-semibold shadow-sm">Order Tiket</Button>
                         </div>
                       </div>
                     </div>
@@ -528,7 +598,7 @@ const Detail: React.FC = () => {
                 </div>
               )}
 
-              {/** small confirmation card */}
+              {/* * small confirmation card
               {!showForm && successTicket == null && (
                 <div className="mt-4 p-4 bg-gray-50 rounded-lg text-center">
                   <div className="font-semibold text-gray-700">Sudah mendaftar? Klik Tiket Anda.</div>
@@ -539,73 +609,273 @@ const Detail: React.FC = () => {
                     Tiket Anda
                   </Button>
                 </div>
-              )}
+              )} */}
 
-              {/** submitted notice (non-modal) */}
-              {!showForm && successTicket == null && toast?.type === "success" && (
+              {/* * submitted notice (non-modal) */}
+              {/* {!showForm && successTicket == null && toast?.type === "success" && (
                 <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
                   <div className="font-semibold text-green-700">Pendaftaran berhasil</div>
                 </div>
-              )}
+              )} */}
+
+              {/* Bagian utama footer */}
+              <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 mb-12">
+                {/* Kontak Admin */}
+                <div className="space-y-6">
+                  <div className="text-center lg:text-left">
+                    <h2 className="mb-3 text-2xl font-bold text-gray-900 dark:text-white">
+                      Butuh Bantuan?
+                    </h2>
+                    <p className="text-lg text-gray-600 dark:text-gray-300 max-w-md mx-auto lg:mx-0">
+                      Hubungi admin kami yang siap membantu Anda dengan senang hati.
+                    </p>
+                  </div>
+
+                  {/* Kartu Kontak Admin */}
+                  <div className="grid gap-4 md:grid-cols-2">
+                    {/* Admin Laki-laki */}
+                    <div className="bg-white rounded-2xl p-6 shadow-lg border border-blue-100 hover:shadow-xl transition-all duration-300">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="bg-blue-100 p-3 rounded-xl">
+                          <FaUser className="w-6 h-6 text-blue-600" />
+                        </div>
+                        <div>
+                          <h3 className="font-semibold text-gray-900">Admin Laki-laki</h3>
+                          <p className="text-sm text-gray-500">Siap membantu</p>
+                        </div>
+                      </div>
+                      <a
+                        href={`https://wa.me/${MALE_CONTACT}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-2 w-full bg-green-600 hover:bg-green-700 text-white py-3 px-4 rounded-xl font-semibold transition-colors duration-200"
+                      >
+                        <FaWhatsapp className="w-5 h-5" />
+                        Hubungi via WhatsApp
+                      </a>
+                    </div>
+
+                    {/* Admin Perempuan */}
+                    <div className="bg-white rounded-2xl p-6 shadow-lg border border-pink-100 hover:shadow-xl transition-all duration-300">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="bg-pink-100 p-3 rounded-xl">
+                          <FaUserFriends className="w-6 h-6 text-pink-600" />
+                        </div>
+                        <div>
+                          <h3 className="font-semibold text-gray-900">Admin Perempuan</h3>
+                          <p className="text-sm text-gray-500">Siap membantu</p>
+                        </div>
+                      </div>
+                      <a
+                        href={`https://wa.me/${FEMALE_CONTACT}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-2 w-full bg-green-600 hover:bg-green-700 text-white py-3 px-4 rounded-xl font-semibold transition-colors duration-200"
+                      >
+                        <FaWhatsapp className="w-5 h-5" />
+                        Hubungi via WhatsApp
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Pencarian Tiket */}
+                <div className="flex flex-col justify-center">
+                  <div className="bg-gradient-to-r from-blue-400 to-blue-500 rounded-2xl p-8 text-white text-center lg:text-left">
+                    <div className="flex flex-col items-center lg:items-start">
+                      <div className="bg-white/20 p-3 rounded-2xl mb-4">
+                        <FaTicketAlt className="w-8 h-8" />
+                      </div>
+                      <h3 className="text-2xl font-bold mb-3">
+                        Sudah Mendaftar?
+                      </h3>
+                      <p className="text-blue-100 mb-6 max-w-sm">
+                        Cek status pendaftaran dan informasi tiket Anda dengan mudah. Masukkan nomor tiket untuk melihat detail lengkap.
+                      </p>
+                      <Link
+                        href="/trust-islam/ticket"
+                        className="inline-flex items-center justify-center gap-2 bg-white text-blue-600 hover:bg-blue-50 font-semibold py-3 px-6 rounded-xl transition-all duration-200 transform hover:scale-105"
+                      >
+                        <FaTicketAlt className="w-5 h-5" />
+                        Cek Tiket Saya
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
-
       {/* Donation Dialog (step 2) */}
       {showDonationDialog && (
         <div className="fixed inset-0 z-[10000] flex items-center justify-center bg-black/50 p-4">
-          <div className="bg-white rounded-xl w-full max-w-lg p-6 shadow-2xl max-h-[90vh] overflow-y-auto">
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="text-lg font-semibold">Tambahkan Nominal Infaq</h3>
-              <button onClick={() => { setShowDonationDialog(false); setProofFile(null); }} className="text-gray-500">✕</button>
+          <div className="bg-white rounded-2xl w-full max-w-lg shadow-2xl max-h-[95vh] flex flex-col">
+            {/* Header dengan gradient */}
+            <div className="bg-gradient-to-r from-[#0EA5E9] to-[#0B6E99] p-6 text-white flex-shrink-0">
+              <div className="flex justify-between items-center">
+                <div>
+                  <h3 className="text-xl font-semibold">Langkah Terakhir</h3>
+                  <p className="text-blue-100 text-sm mt-1">Tambahkan nominal infaq terbaik Anda</p>
+                </div>
+                <button 
+                  onClick={() => { setShowDonationDialog(false); setProofFile(null); }} 
+                  className="text-white hover:text-blue-200 transition-colors p-1 rounded-full hover:bg-white/10"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
             </div>
 
-            <div className="space-y-4">
+            {/* Konten utama yang bisa di-scroll */}
+            <div className="flex-1 overflow-y-auto p-6 space-y-6">
+              {/* Section Nominal Infaq */}
               <div>
-                <label className="text-sm font-medium block">Nominal Infaq (Rp)</label>
-                <input
-                  type="number"
-                  min={0}
-                  step={1000}
-                  value={donationAmount}
-                  onChange={(e) => setDonationAmount(Number(e.target.value || 0))}
-                  className="mt-1 block w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0EA5E9]"
-                />
-                {/* <p className="text-xs text-gray-500 mt-1">Boleh diisi 0 jika tidak ingin berdonasi.</p> */}
+                <label className="text-sm font-semibold text-gray-700 block mb-3">Nominal Infaq (Rp)</label>
+                
+                {/* Quick Amount Buttons */}
+                <div className="grid grid-cols-3 gap-2 mb-4">
+                  {[10000, 25000, 50000, 100000, 250000, 500000].map((amount) => (
+                    <button
+                      key={amount}
+                      type="button"
+                      onClick={() => {
+                        const formatted = amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+                        setDonationAmount(formatted);
+                      }}
+                      className="py-2 px-3 text-sm font-medium rounded-lg border border-gray-200 hover:border-[#0EA5E9] hover:bg-blue-50 transition-all duration-200"
+                    >
+                      {amount.toLocaleString('id-ID')}
+                    </button>
+                  ))}
+                </div>
+
+                {/* Input Nominal */}
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span className="text-gray-500 font-semibold">Rp</span>
+                  </div>
+                  <input
+                    type="text"
+                    inputMode="numeric"
+                    value={donationAmount}
+                    onChange={handleDonationChange}
+                    placeholder="Masukkan nominal"
+                    className="block w-full border border-gray-300 rounded-xl pl-12 pr-4 py-4 focus:outline-none focus:ring-2 focus:ring-[#0EA5E9] focus:border-transparent text-lg font-semibold placeholder-gray-400"
+                  />
+                  <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                    <span className="text-gray-400">IDR</span>
+                  </div>
+                </div>
+                <p className="text-xs text-gray-500 mt-2 text-center">Kosongkan jika tidak ingin berdonasi</p>
               </div>
 
-              <div>
-                <label className="text-sm font-medium block">Pilih Bank</label>
-                <select value={bank} onChange={(e) => setBank(e.target.value)} className="mt-1 block w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0EA5E9]">
+              {/* Section Bank Transfer */}
+              <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">
+                <label className="text-sm font-semibold text-gray-700 block mb-3">Pilih Bank Transfer</label>
+                
+                <select 
+                  value={bank} 
+                  onChange={(e) => setBank(e.target.value)} 
+                  className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#0EA5E9] focus:border-transparent bg-white"
+                >
                   <option>Bank Jago</option>
-                  {/* kalau mau tambah bank lain, tambahkan di sini */}
                 </select>
 
-                <div className="mt-3 p-3 bg-gray-50 rounded">
-                  <div className="font-semibold text-3xl">506693547160</div>
-                  <Image src="/images/component/logo-jago.png" alt="Bank Jago Logo" width={100} height={40} />
-                  <br/>
-                  <div className="text-sm text-gray-700">Nama: Adi Dwi Saputra</div>
-                  <div className="text-xs text-gray-500 mt-1">Transfer ke atas nama & nomor di atas.</div>
+                {/* Bank Card */}
+                <div className="mt-4 bg-gradient-to-br from-blue-400 to-blue-500 rounded-2xl p-5 text-white shadow-lg">
+                  <div className="flex justify-between items-start mb-4">
+                    <div>
+                      <div className="text-blue-200 text-sm font-medium">Nomor Rekening</div>
+                      <div className="font-mono text-xl xs:text-2xl font-bold tracking-wider">5066 9354 7160</div>
+                    </div>
+                    <div className="bg-white/20 p-2 rounded-lg">
+                      <Image 
+                        src="/images/component/logo-jago.png" 
+                        alt="Bank Jago Logo" 
+                        width={60} 
+                        height={24}
+                        className="filter brightness-0 invert"
+                      />
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <div className="flex justify-between items-center">
+                      <span className="text-blue-200 text-sm">Atas Nama</span>
+                      <span className="font-semibold text-sm xs:text-xl">Adi Dwi Saputra</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-blue-200 text-sm">Bank</span>
+                      <span className="font-semibold text-sm xs:text-xl">Bank Jago</span>
+                    </div>
+                  </div>
+
+                  <div className="mt-4 pt-4 border-t border-blue-500/30">
+                    <div className="flex items-center justify-center gap-2 text-blue-200 text-xs">
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                      </svg>
+                      Transfer ke nomor rekening di atas
+                    </div>
+                  </div>
                 </div>
               </div>
 
-              {/* <div>
-                <label className="text-sm font-medium block">Unggah Bukti Transfer (jika memberi infaq {'>'} 0)</label>
-                <label className="mt-1 flex items-center gap-2 cursor-pointer text-sm text-gray-700 bg-gray-100 px-3 py-2 rounded">
-                  <FaUpload />
-                  <span>{proofFile ? proofFile.name : "Pilih file (jpg/png/pdf) — max 5MB"}</span>
-                  <input type="file" accept=".jpg,.jpeg,.png,.pdf" onChange={onSelectProof} className="hidden" />
-                </label>
-                {donationAmount > 0 && !proofFile && <p className="text-sm text-red-500 mt-1">Bukti transfer wajib jika nominal {'>'} 0.</p>}
-                {proofFile && <p className="text-sm text-green-700 mt-1">File siap diunggah: {proofFile.name}</p>}
-              </div> */}
+              {/* Informasi Tambahan */}
+              <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
+                <div className="flex items-start gap-3">
+                  <div className="bg-amber-100 p-2 rounded-full">
+                    <svg className="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="font-semibold text-amber-800 text-sm">Penting!</h4>
+                    <p className="text-amber-700 text-xs mt-1">
+                      Pastikan transfer sesuai nominal yang Anda masukkan. Bukti transfer akan diminta setelah pendaftaran.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-              <div className="flex justify-end gap-3">
-                <button type="button" className="px-4 py-2 rounded border" onClick={() => { setShowDonationDialog(false); }}>Kembali</button>
-                <button type="button" disabled={loading || uploadingProof} onClick={confirmDonationAndRegister} className={`px-4 py-2 rounded text-white ${loading || uploadingProof ? "bg-gray-400 cursor-not-allowed" : "bg-[#0EA5E9] hover:bg-[#0ca6dc]"}`}>
-                  {loading || uploadingProof ? "Memproses..." : "Konfirmasi & Daftar"}
+            {/* Footer dengan tombol yang tetap terlihat */}
+            <div className="flex-shrink-0 p-6 bg-white border-t border-gray-200">
+              <div className="flex justify-between gap-3">
+                <button 
+                  type="button" 
+                  onClick={() => { setShowDonationDialog(false); }}
+                  className="flex-1 px-6 py-3 rounded-xl border border-gray-300 hover:bg-gray-50 transition-colors font-medium text-gray-700"
+                >
+                  Kembali
+                </button>
+                <button 
+                  type="button" 
+                  disabled={loading || uploadingProof} 
+                  onClick={() => confirmDonationAndRegister()}
+                  className={`flex-1 px-6 py-3 rounded-xl font-semibold transition-all duration-200 ${
+                    loading || uploadingProof 
+                      ? "bg-gray-400 cursor-not-allowed text-white" 
+                      // : "bg-gradient-to-r from-[#0EA5E9] to-[#0B6E99] hover:from-[#0ca6dc] hover:to-[#0a5a80] text-white shadow-lg hover:shadow-xl"
+                      : "bg-[#0EA5E9] hover:bg-[#0a5a80] text-white shadow-lg hover:shadow-xl"
+                  }`}
+                >
+                  {loading || uploadingProof ? (
+                    <div className="flex items-center justify-center gap-2">
+                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                      Memproses...
+                    </div>
+                  ) : (
+                    <div className="flex items-center justify-center gap-2">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      Daftar
+                    </div>
+                  )}
                 </button>
               </div>
             </div>
@@ -704,7 +974,7 @@ const Detail: React.FC = () => {
                         </a>
                         <hr/>
                         <a
-                          href={`/tickets/${successTicket.ticket_number}`}
+                          href={`/trust-islam/tickets/${successTicket.ticket_number}`}
                           className="px-4 py-2 rounded bg-[#0EA5E9] text-white text-center"
                         >
                           Buka Halaman Konfirmasi

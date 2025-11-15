@@ -6,6 +6,13 @@ import { notFound } from "next/navigation";
 import { cookies } from "next/headers";
 import TicketActionsClient from "@/components/Trust-Islam/Ticket/TicketActionsClient";
 import { FaWhatsapp } from "react-icons/fa";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Konfirmasi Pendaftaran - Trust Islam",
+  description: "Halaman konfirmasi pendaftaran event Trust Islam. Cek status tiket dan ikuti petunjuk konfirmasi via WhatsApp.",
+};
+
 
 // ✅ Fixed: params sebagai Promise
 interface Props {

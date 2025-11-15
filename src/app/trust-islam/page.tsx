@@ -3,6 +3,7 @@ import Beranda from "@/components/Trust-Islam/Beranda";
 import Detail from "@/components/Trust-Islam/Detail";
 import Tentang from "@/components/Trust-Islam/Tentang";
 import { Metadata } from "next";
+import Footer from "@/components/Trust-Islam/Footer";
 
 export const metadata: Metadata = {
   title: "Trust Islam",
@@ -19,6 +20,7 @@ export default function Home() {
       <Beranda />
       <Tentang />
       <Detail />
+      <Footer />
     </main>
     </>
   );
