@@ -1,4 +1,4 @@
-// components/TicketActionsClient.tsx
+// components/Trust-Islam/Ticket/TicketActionsClient.tsx
 "use client";
 
 import React from "react";
@@ -6,40 +6,41 @@ import { useRouter } from "next/navigation";
 
 type Props = {
   ticketId: string;
+  waUrl: string;
+  groupLink: string;
+  qrUrl: string;
 };
 
-/**
- * Client-only component untuk tombol interaktif:
- * - Copy ticket
- * - Buka WhatsApp (link)
- * - Gabung group WA (link)
- * - Navigasi / lihat QR
- */
-export default function TicketActionsClient({ ticketId }: Props) {
+export default function TicketActionsClient({ ticketId, waUrl, groupLink, qrUrl }: Props) {
   const router = useRouter();
 
   async function copyTicket() {
     try {
       await navigator.clipboard.writeText(ticketId);
-      // simple visual feedback via alert or use a toast lib
       alert("Nomor tiket disalin ke clipboard");
     } catch {
-      alert("Gagal menyalin nomor tiket");
+      alert("Gagal menyalin");
     }
   }
 
-  // function openWhatsApp() {
-  //   window.open(waUrl, "_blank", "noopener,noreferrer");
-  // }
-
-  // function openGroup() {
-  //   window.open(groupLink, "_blank", "noopener,noreferrer");
-  // }
-
+  function openUrl(url: string) {
+    window.open(url, "_blank", "noopener,noreferrer");
+  }
 
   return (
-    <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
-      <button onClick={copyTicket} className="px-4 py-2 rounded bg-[#0EA5E9] text-white font-semibold">Salin kode tiket</button>
+    <div className="flex flex-wrap gap-2">
+      <button onClick={copyTicket} className="px-3 py-1 rounded bg-[#0EA5E9] text-white text-sm">
+        Salin
+      </button>
+      {/* <button onClick={() => openUrl(waUrl)} className="px-3 py-1 rounded bg-green-600 text-white text-sm">
+        Hubungi WA
+      </button>
+      <button onClick={() => openUrl(groupLink)} className="px-3 py-1 rounded border text-sm">
+        Gabung Group
+      </button>
+      <button onClick={() => router.push(`/trust-islam/tickets/${encodeURIComponent(ticketId)}`)} className="px-3 py-1 rounded border text-sm">
+        Lihat Halaman
+      </button> */}
     </div>
   );
 }

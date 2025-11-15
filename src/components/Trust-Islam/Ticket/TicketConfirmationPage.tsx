@@ -99,6 +99,9 @@ export default async function TicketConfirmationPage({ params }: Props) {
               </div> */}
               <TicketActionsClient
                 ticketId={ticket.id}
+                waUrl={waUrl}
+                groupLink={groupLink}
+                qrUrl={ticket.qrCodeUrl}
               />
             </div>
           </div>

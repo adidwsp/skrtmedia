@@ -1,8 +1,9 @@
+// components/Trust-Islam/Ticket/index.tsx
 "use client";
 
 import React, { useState } from "react";
-import TicketCard from "@/components/Trust-Islam/Ticket/TicketCard"; // adjust if path berbeda
-import { createClient } from "src/utils/supabase/client";
+import TicketCard from "@/components/Trust-Islam/Ticket/TicketCard";
+import { createClient } from "@/utils/supabase/client";
 
 const supabase = createClient();
 
@@ -32,12 +33,10 @@ const TicketsPage: React.FC = () => {
     setNotFound(false);
 
     try {
-      // CASE-INSENSITIVE search menggunakan ilike
-      // SELECT tiket + related event row (relation name assumed 'events')
       const res = await supabase
         .from("tickets")
-        .select("*, events(*)") // ganti 'events' jika nama relation berbeda di DB
-        .ilike("ticket_number", q) // case-insensitive exact-ish match; you can also use .eq if exact-case match desired
+        .select("*, events(*)")
+        .ilike("ticket_number", q)
         .maybeSingle();
 
       if (res.error) {
@@ -62,28 +61,26 @@ const TicketsPage: React.FC = () => {
   }
 
   function mapRowToTicket(row: DBTicketRow) {
-    // row = tiket row. Related event (if any) available at row.events (because of select('*, events(*)'))
-    const ev = row.events ?? null; // null if not joined / missing
+    const ev = row.events ?? null;
     const ticket = {
-      id: row.ticket_number ?? (row.id ? String(row.id) : "UNKNOWN"),
+      id: row.ticket_number ?? String(row.id ?? "UNKNOWN"),
       eventName: ev?.name ?? ev?.title ?? "Trust Islam",
-      date: ev?.date ?? (row.created_at ? new Date(row.created_at).toLocaleDateString("id-ID", { day: "2-digit", month: "long", year: "numeric" }) : "—"),
+      date: ev?.date ?? (row.created_at ? new Date(row.created_at).toISOString() : ""),
       time: ev?.time ?? ev?.event_time ?? "—",
       location: ev?.description ?? "—",
       ticketType: row.ticket_type ?? "General",
       price: typeof row.donation_amount === "number" ? row.donation_amount : row.price ?? 0,
       qrCodeUrl: row.qr_code_url ?? `/api/qrcode/${row.ticket_number ?? (row.id ?? "")}`,
       isUsed: !!row.is_used,
+      // Tambahkan field untuk detail
+      purchaserName: row.name ?? row.nama ?? "",
+      email: row.email ?? "",
+      phone: row.phone ?? "",
+      donation_amount: typeof row.donation_amount === "number" ? row.donation_amount : row.price ?? 0,
+      donation_bank: row.donation_bank ?? "",
+      created_at: row.created_at ?? "",
     };
     return ticket;
-  }
-
-  function copyTicketNumber() {
-    if (!ticketRow) return;
-    const value = ticketRow.ticket_number ?? (ticketRow.id ? String(ticketRow.id) : "");
-    navigator.clipboard?.writeText(value)
-      .then(() => setToast({ message: "Nomor tiket disalin", type: "success" }))
-      .catch(() => setToast({ message: "Gagal menyalin", type: "error" }));
   }
 
   return (
@@ -124,10 +121,6 @@ const TicketsPage: React.FC = () => {
 
           {ticketRow ? (
             <div className="space-y-4">
-              <div className="flex justify-end gap-2 mb-2">
-                
-              </div>
-
               <TicketCard ticket={mapRowToTicket(ticketRow)} />
             </div>
           ) : (
