@@ -6,7 +6,7 @@ import { Metadata } from "next";
 import Footer from "@/components/Trust-Islam/Footer";
 
 export const metadata: Metadata = {
-  title: "Trust Islam",
+  title: "Trust Islam - Skrtmedia",
   description: "Trust Islam - Your Gateway to Islamic Knowledge",
   // other metadata
 };

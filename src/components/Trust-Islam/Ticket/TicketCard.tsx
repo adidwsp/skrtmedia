@@ -386,7 +386,7 @@ const TicketCard: React.FC<TicketCardProps> = ({ ticket }) => {
                   <div className="font-semibold text-gray-900 text-lg">{purchaser}</div>
                 </div>
               )}
-              {email && (
+              {/* {email && (
                 <div>
                   <div className="text-sm text-gray-600 font-medium">Email</div>
                   <div className="font-semibold text-gray-900 flex items-center gap-2">
@@ -403,7 +403,7 @@ const TicketCard: React.FC<TicketCardProps> = ({ ticket }) => {
                     {phone}
                   </div>
                 </div>
-              )}
+              )} */}
             </div>
           </div>
 

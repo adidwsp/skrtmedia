@@ -22,7 +22,7 @@ const Tentang = ({ center = true }) => {
           <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-emerald-200 rounded-full mix-blend-multiply filter blur-xl opacity-15"></div>
         </div>
 
-        <div className="container mx-auto px-6 relative z-10">
+        <div className="container mx-auto xxs:px-0 sm:px-4 md:px-6 relative z-10">
           {/* Header Section */}
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold mb-4">
