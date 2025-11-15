@@ -43,15 +43,6 @@ const TicketCard: React.FC<TicketCardProps> = ({ ticket }) => {
   const statusColor = ticket.isUsed ? "bg-red-500" : "bg-green-500";
   const statusText = ticket.isUsed ? "Sudah Digunakan" : "Aktif";
 
-  // const confirmationUrl = useMemo(() => {
-  //   try {
-  //     const origin = typeof window !== "undefined" ? window.location.origin : "";
-  //     return origin ? `${origin}/tickets/${encodeURIComponent(ticket.id)}` : `/tickets/${encodeURIComponent(ticket.id)}`;
-  //   } catch {
-  //     return `/tickets/${encodeURIComponent(ticket.id)}`;
-  //   }
-  // }, [ticket.id]);
-
   const confirmationUrl = useMemo(() => {
     try {
       const origin = typeof window !== "undefined" ? window.location.origin : "";
@@ -72,6 +63,17 @@ const TicketCard: React.FC<TicketCardProps> = ({ ticket }) => {
   const donation = typeof (ticket.donation_amount ?? (ticket.price ?? undefined)) === "number" ? (ticket.donation_amount ?? ticket.price) : undefined;
   const donationBank = ticket.donation_bank ?? undefined;
   const createdAt = ticket.created_at ? new Date(ticket.created_at).toLocaleString("id-ID") : undefined;
+  const eventDate = ticket.date ? new Date(ticket.date) : undefined;
+  const formattedDate = eventDate?.toLocaleDateString("id-ID", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+  const formattedTime = eventDate?.toLocaleTimeString("id-ID", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
 
   return (
     <div className="bg-white rounded-2xl shadow-xl overflow-hidden max-w-lg mx-auto my-8 border border-gray-100 transition duration-300 hover:shadow-2xl">
@@ -85,14 +87,14 @@ const TicketCard: React.FC<TicketCardProps> = ({ ticket }) => {
       <div className="p-6 space-y-3">
         <div className="flex items-center text-gray-600">
           <FiCalendar className="w-5 h-5 text-indigo-500 mr-3" />
-          <span className="font-semibold">{ticket.date}</span>
+          <span className="font-semibold">{formattedDate}</span>
           <FiClock className="w-5 h-5 text-indigo-500 ml-4 mr-3" />
-          <span className="font-semibold">{ticket.time}</span>
+          <span className="font-semibold">{formattedTime} WIB</span>
         </div>
 
         <div className="flex items-center text-gray-600">
           <FiMapPin className="w-5 h-5 text-indigo-500 mr-3" />
-          <span className="truncate">{ticket.location}</span>
+          <a href="https://maps.app.goo.gl/EosPh2yzaz3VK4fp8" className="truncate text-blue-600 hover:underline" target="_blank">Waroeng Desa (Wardes)</a>
         </div>
 
         <div className="flex items-center text-gray-600">
@@ -173,7 +175,7 @@ const TicketCard: React.FC<TicketCardProps> = ({ ticket }) => {
           </div>
 
           <div className="flex justify-between border-b pb-1">
-            <span className="font-medium">Harga / Donasi:</span>
+            <span className="font-medium">Infaq:</span>
             <span className="text-right">Rp {Number(donation ?? 0).toLocaleString("id-ID")}</span>
           </div>
 
