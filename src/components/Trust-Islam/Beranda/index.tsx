@@ -12,10 +12,10 @@ const Beranda = ({ center = true }) => {
   ];
 
   const mediaPartners = [
-    { id: 1, logo: "/images/media-partners/media1.png", name: "Muslim Youth" },
-    { id: 2, logo: "/images/media-partners/media2.png", name: "Islamic Hub" },
-    { id: 3, logo: "/images/media-partners/media3.png", name: "Dakwah Digital" },
-    { id: 4, logo: "/images/media-partners/media4.png", name: "Quranic Generation" }
+    { id: 1, logo: "/images/component/hallo-muslimah.jpg", name: "Hallo Muslimah", className: "rounded-full" },
+    { id: 2, logo: "/images/component/odoj.png", name: "One Day One Juz" },
+    { id: 3, logo: "/images/component/tfq.png", name: "Tafaquh" },
+    // { id: 4, logo: "/images/media-partners/media4.png", name: "Quranic Generation" }
   ];
 
   return (
@@ -37,7 +37,7 @@ const Beranda = ({ center = true }) => {
               {/* TRUST */}
               <div className="tracking-wide">
                 <span 
-                  className="block text-2xl xxs:text-2xl xs:text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-black"
+                  className="block text-2xl xxs:text-3xl xs:text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-black"
                   style={{ 
                     fontFamily: "Poppins, sans-serif",
                     background: "linear-gradient(135deg, #0F172A 0%, #1E293B 100%)",
@@ -85,7 +85,7 @@ const Beranda = ({ center = true }) => {
                 {/* Blue LAM underneath */}
                 <div className="mt-2 text-left">
                   <span
-                    className="block font-black text-4xl xxs:text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl"
+                    className="block font-black text-4xl xxs:text-5xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl"
                     style={{ 
                       fontFamily: "Poppins, sans-serif",
                       background: "linear-gradient(135deg, #0EA5E9 0%, #0369A1 100%)",
@@ -103,7 +103,7 @@ const Beranda = ({ center = true }) => {
 
           {/* Subtitle */}
           <p className="text-sm xxs:text-sm sm:text-lg md:text-xl sm:mh-10 mt-6 max-w-2xl mx-auto text-[#0F172A] font-medium px-4">
-            Ketika logika dan iman seolah tak sejalan, ke mana seharusnya kita percaya? Temukan kembali keyakinan bahwa Islam adalah solusi sejati dari setiap keresahan.
+            Saat logika dan perasaan seolah tak sejalan, ke mana kita harus menaruh percaya? Di tengah banyaknya pilihan dan keraguan, temukan kembali arah dan jawaban yang menenangkan atas setiap keresahan.
           </p>
           <br />
           <br />
@@ -159,26 +159,25 @@ const Beranda = ({ center = true }) => {
                 <span className="text-xs font-semibold text-gray-600 uppercase tracking-wide">Media Partner</span>
               </div>
               <div className="flex justify-center items-center flex-wrap gap-3 sm:gap-4">
-                {/* {mediaPartners.map((media) => (
+                {mediaPartners.map((media) => (
                   <div 
                     key={media.id}
-                    className="bg-white/80 backdrop-blur-sm rounded-lg p-2 shadow-md border border-gray-200 hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+                    className="bg-white/0 backdrop-blur-sm  hover:shadow-lg transition-all duration-300 transform hover:scale-105"
                   >
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-purple-100 to-pink-100 rounded-md flex items-center justify-center"> */}
-                      {/* Placeholder untuk logo media partner */}
-                      {/* <div className="text-purple-600 font-semibold text-xs text-center leading-tight">
-                        {media.name.split(' ')[0]}
-                      </div> */}
-                      {/* <Image 
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-md flex items-center justify-center">
+                      <Image 
                         src={media.logo} 
                         alt={media.name}
-                        width={48}
                         height={48}
+                        width={48}
                         className="object-contain"
-                      /> */}
-                    {/* </div>
+                      />                     
+                    </div>
+                    {/* <div className="text-purple-600 font-semibold text-xs text-center leading-tight">
+                        {media.name.split(' ')[0]}
+                      </div> */}
                   </div>
-                ))} */}
+                ))}
               </div>
             </div>
           </div>

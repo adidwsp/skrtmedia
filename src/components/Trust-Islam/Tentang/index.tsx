@@ -22,7 +22,7 @@ const Tentang = ({ center = true }) => {
           <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-emerald-200 rounded-full mix-blend-multiply filter blur-xl opacity-15"></div>
         </div>
 
-        <div className="container mx-auto px-6 relative z-10">
+        <div className="container mx-auto xxs:px-0 sm:px-4 md:px-6 relative z-10">
           {/* Header Section */}
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold mb-4">
@@ -33,8 +33,8 @@ const Tentang = ({ center = true }) => {
               Mengapa Acara Ini <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">Penting?</span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              {"Di tengah arus digital yang deras, kami hadir sebagai jembatan untuk membangun kembali"} 
-              {"kepercayaan dan keyakinan generasi muda Muslim terhadap ajaran Islam yang rahmatan lil 'alamin."}
+              {"Di tengah arus informasi yang tak terbendung, mudah sekali kita merasa bingung dan kehilangan pegangan. "} 
+              {"Kami hadir untuk menciptakan sebuah ruang jeda—sebuah jembatan untuk terhubung kembali dengan nilai-nilai yang memberi ketenangan dan tujuan hidup."}
             </p>
           </div>
 
@@ -54,24 +54,24 @@ const Tentang = ({ center = true }) => {
               
               <div className="space-y-4">
                 <p className="text-gray-700 leading-relaxed text-lg">
-                  Di era digital yang penuh dengan informasi beragam, banyak generasi muda Muslim mengalami 
-                  <span className="font-semibold text-blue-600"> krisis kepercayaan </span> 
-                  terhadap ajaran Islam.
+                  Di era digital yang penuh distraksi, banyak dari kita yang merasa <i>semakin tahu banyak, semakin bingung</i>. Muncul 
+                  <span className="font-semibold text-blue-600"> krisis kepercayaan</span> 
+                  , bukan hanya pada orang lain, tapi juga pada nilai-nilai yang seharusnya kita pegang.
                 </p>
                 
                 <div className="bg-blue-50 rounded-2xl p-4 border-l-4 border-blue-500">
                   <div className="flex items-start gap-3">
                     <FaQuoteLeft className="w-5 h-5 text-blue-500 mt-1 flex-shrink-0" />
                     <p className="text-blue-800 italic">
-                      {`"Banyak yang bertanya: Masih relevankah Islam di zaman modern? 
-                      Kajian ini hadir sebagai jawaban dan pencerahan."`}
+                      {`"Banyak yang bertanya: Masih adakah panduan yang relevan di zaman modern ini?
+                      Acara ini hadir sebagai ruang diskusi untuk menemukan jawaban dan pencerahan itu."`}
                     </p>
                   </div>
                 </div>
 
                 <p className="text-gray-700 leading-relaxed">
-                  Kami percaya bahwa setiap keraguan adalah pintu menuju keyakinan yang lebih kuat. 
-                  Melalui acara ini, kami ingin membangun jembatan antara logika dan iman.
+                  Kami percaya bahwa setiap keraguan adalah pintu menuju pemahaman yang lebih dalam.
+                  Melalui acara ini, kami ingin membangun jembatan antara pertanyaan logis dan ketenangan hati.
                 </p>
               </div>
             </div>
@@ -92,26 +92,26 @@ const Tentang = ({ center = true }) => {
                 {[
                   {
                     icon: FaShieldAlt,
-                    title: "Mengembalikan Pemahaman",
-                    description: "Islam sebagai solusi komprehensif bagi seluruh aspek kehidupan",
+                    title: "Menemukan Solusi Praktis",
+                    description: "Islam sebagai solusi komprehensif bagi seluruh aspek kehidupan.",
                     color: "from-blue-500 to-cyan-500"
                   },
                   {
                     icon: FaHeart,
-                    title: "Memperkuat Aqidah",
-                    description: "Membangun keyakinan generasi muda Muslim di Karawang",
+                    title: "Memperkuat Pegangan Hidup",
+                    description: "Membantu menemukan kembali pondasi kepercayaan diri agar tidak mudah terjebak dalam kegelisahan atau kehilangan arah.",
                     color: "from-red-500 to-pink-500"
                   },
                   {
                     icon: FaLightbulb,
                     title: "Menjawab Keraguan",
-                    description: "Relevansi Islam di zaman modern dengan pendekatan yang mudah dipahami",
+                    description: "Membahas pertanyaan-pertanyaan besar dalam hidup dengan pendekatan yang membumi, santai, dan mudah dipahami.",
                     color: "from-amber-500 to-orange-500"
                   },
                   {
                     icon: FaHandsHelping,
                     title: "Membangun Silaturahmi",
-                    description: "Wadah positif untuk berjejaring dan saling mendukung",
+                    description: "Menyediakan wadah positif dan hangat untuk berjejaring, bertumbuh dan saling mendukung.",
                     color: "from-green-500 to-emerald-500"
                   }
                 ].map((item, index) => (
@@ -152,10 +152,9 @@ const Tentang = ({ center = true }) => {
           {/* CTA Bottom */}
           <div className="text-center mt-12">
             <div className="bg-gradient-to-r from-blue-600 to-cyan-600 rounded-3xl p-8 text-white max-w-4xl mx-auto">
-              <h3 className="text-2xl font-bold mb-4">Siap Memperkuat Keyakinan Anda?</h3>
+              <h3 className="text-2xl font-bold mb-4">Siap Menemukan Kembali Arah Anda?</h3>
               <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
-                Bergabunglah dengan ratusan pemuda Muslim lainnya dalam perjalanan 
-                menemukan kembali keindahan Islam yang sebenarnya.
+                Siap Menemukan Kembali Arah Anda? Bergabunglah bersama kami dalam perjalanan menemukan jawaban dan ketenangan di tengah keresahan.
               </p>
               <a 
                 href="#detail-acara" 

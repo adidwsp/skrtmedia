@@ -17,23 +17,23 @@ const Footer = () => {
                   src="/images/logo/skrt-logo.svg"
                   alt="logo"
                   className="w-40 dark:hidden"
-                  width={160}
-                  height={35}
+                  width={100}
+                  height={20}
                 />
                 <Image
                   src="/images/logo/skrt-logo.svg"
                   alt="logo"
                   className="hidden w-40 dark:block"
-                  width={160}
-                  height={35}
+                  width={100}
+                  height={20}
                 />
               </Link>
-              <p className="text-base leading-relaxed text-body-color dark:text-body-color-dark">
+              <p className="text-sm leading-relaxed text-body-color dark:text-body-color-dark">
                 Good Vibes, Good Circle
               </p>
             </div>
 
-            <p className="text-center text-base text-body-color dark:text-white">
+            <p className="text-center text-sm text-body-color dark:text-white">
               © 2025 Trust Islam. All rights reserved. 
               <br />
               Made with ❤️ by {" "}
