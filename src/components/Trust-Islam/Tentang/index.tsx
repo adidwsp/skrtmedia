@@ -33,8 +33,8 @@ const Tentang = ({ center = true }) => {
               Mengapa Acara Ini <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">Penting?</span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Di tengah arus digital yang deras, kami hadir sebagai jembatan untuk membangun kembali 
-              kepercayaan dan keyakinan generasi muda Muslim terhadap ajaran Islam yang rahmatan lil 'alamin.
+              {"Di tengah arus digital yang deras, kami hadir sebagai jembatan untuk membangun kembali"} 
+              {"kepercayaan dan keyakinan generasi muda Muslim terhadap ajaran Islam yang rahmatan lil 'alamin."}
             </p>
           </div>
 
@@ -63,8 +63,8 @@ const Tentang = ({ center = true }) => {
                   <div className="flex items-start gap-3">
                     <FaQuoteLeft className="w-5 h-5 text-blue-500 mt-1 flex-shrink-0" />
                     <p className="text-blue-800 italic">
-                      "Banyak yang bertanya: Masih relevankah Islam di zaman modern? 
-                      Kajian ini hadir sebagai jawaban dan pencerahan."
+                      {`"Banyak yang bertanya: Masih relevankah Islam di zaman modern? 
+                      Kajian ini hadir sebagai jawaban dan pencerahan."`}
                     </p>
                   </div>
                 </div>

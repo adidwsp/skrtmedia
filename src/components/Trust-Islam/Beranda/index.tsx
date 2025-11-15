@@ -107,7 +107,7 @@ const Beranda = ({ center = true }) => {
           </p>
           <br />
           <br />
-          <p className="text-sm text-gray-500 italic sm:text-lg">"Bukan dunia yang salah, mungkin kita yang lupa arah."</p>
+          <p className="text-sm text-gray-500 italic sm:text-lg">{`"Bukan dunia yang salah, mungkin kita yang lupa arah."`}</p>
 
           {/* CTA Button */}
           <div className="mt-12">
