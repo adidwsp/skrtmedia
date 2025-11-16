@@ -1,7 +1,11 @@
 // components/tabs/RulesTab.tsx
 import React from 'react';
 import { HiAdjustments } from 'react-icons/hi';
+<<<<<<< HEAD
 import { FaClock, FaHeart, FaHandPeace, FaTrash, FaTshirt, FaPen } from 'react-icons/fa';
+=======
+import { FaClock, FaHeart, FaHandPeace, FaMobile, FaTshirt, FaPen } from 'react-icons/fa';
+>>>>>>> f00b6075a64eec3f66e9b4ffd7eeef638b9a40dc
 
 const RulesTab: React.FC = () => {
   const rules = [
@@ -15,14 +19,20 @@ const RulesTab: React.FC = () => {
     {
       icon: FaHeart,
       emoji: "❤️",
+<<<<<<< HEAD
       title: "Niat Positif",
       description: "Buka hati untuk inspirasi dan wawasan baru.",
+=======
+      title: "Luruskan Niat",
+      description: "Karena Allah semata, mencari ilmu yang bermanfaat",
+>>>>>>> f00b6075a64eec3f66e9b4ffd7eeef638b9a40dc
       color: "red"
     },
     {
       icon: FaHandPeace,
       emoji: "🤫",
       title: "Jaga Ketenangan",
+<<<<<<< HEAD
       description: "Jaga ketenangan agar suasana kondusif.",
       color: "green"
     },
@@ -31,13 +41,27 @@ const RulesTab: React.FC = () => {
       emoji: "🚮",
       title: "Jaga Kebersihan",
       description: "Buang sampah pada tempatnya demi kenyamanan lokasi",
+=======
+      description: "Menjaga suasana kondusif selama majelis ilmu",
+      color: "green"
+    },
+    {
+      icon: FaMobile,
+      emoji: "📵",
+      title: "Non-Aktifkan HP",
+      description: "Matikan atau silent mode perangkat mobile",
+>>>>>>> f00b6075a64eec3f66e9b4ffd7eeef638b9a40dc
       color: "purple"
     },
     {
       icon: FaTshirt,
       emoji: "👕",
       title: "Berpakaian Sopan",
+<<<<<<< HEAD
       description: "Kenakan pakaian yang nyaman, rapi, dan sopan.",
+=======
+      description: "Menutup aurat dan berpakaian yang pantas",
+>>>>>>> f00b6075a64eec3f66e9b4ffd7eeef638b9a40dc
       color: "amber"
     },
     {
@@ -70,10 +94,18 @@ const RulesTab: React.FC = () => {
           <span>Tata Tertib</span>
         </div>
         <h3 className="text-3xl font-bold text-gray-900 mb-4">
+<<<<<<< HEAD
           Menjaga <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">Kenyamanan Bersama</span>
         </h3>
         <p className="text-gray-600 max-w-2xl mx-auto">
           Untuk menciptakan suasana yang kondusif, interaktif, dan saling menghargai, ada beberapa etika (adab) yang perlu kita jaga bersama selama acara berlangsung.
+=======
+          Adab di <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">Majelis Ilmu</span>
+        </h3>
+        <p className="text-gray-600 max-w-2xl mx-auto">
+          Menjaga adab dalam majelis ilmu adalah bagian dari mengagungkan ilmu dan 
+          memuliakan proses belajar. Mari kita jaga bersama-sama.
+>>>>>>> f00b6075a64eec3f66e9b4ffd7eeef638b9a40dc
         </p>
       </div>
 
@@ -110,6 +142,7 @@ const RulesTab: React.FC = () => {
 
       {/* Additional Guidelines */}
       <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-8 border-2 border-green-200">
+<<<<<<< HEAD
         <div className=" gap-8 items-center">
           <div>
             <h4 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
@@ -123,6 +156,55 @@ const RulesTab: React.FC = () => {
           </div>
           
           
+=======
+        <div className="grid md:grid-cols-2 gap-8 items-center">
+          <div>
+            <h4 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+              <HiAdjustments className="w-5 h-5 text-green-600" />
+              Mengapa Adab Penting?
+            </h4>
+            <p className="text-gray-700 leading-relaxed mb-4">
+              Rasulullah ﷺ bersabda: <span className="italic">{`"Barangsiapa menempuh jalan untuk mencari ilmu, 
+              maka Allah akan memudahkan baginya jalan menuju surga."`}</span> (HR. Muslim)
+            </p>
+            <p className="text-gray-700 leading-relaxed">
+              Menjaga adab dalam majelis ilmu akan membuka pintu keberkahan ilmu 
+              dan memudahkan kita untuk memahami serta mengamalkannya.
+            </p>
+          </div>
+          
+          <div className="space-y-4">
+            <div className="flex items-center gap-3 p-4 bg-white/80 rounded-xl border border-green-200">
+              <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center text-green-600 font-bold">
+                1
+              </div>
+              <div>
+                <div className="font-semibold text-gray-900">Mudah Memahami</div>
+                <div className="text-sm text-gray-600">Ketenangan membantu konsentrasi</div>
+              </div>
+            </div>
+            
+            <div className="flex items-center gap-3 p-4 bg-white/80 rounded-xl border border-green-200">
+              <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center text-green-600 font-bold">
+                2
+              </div>
+              <div>
+                <div className="font-semibold text-gray-900">Keberkahan Ilmu</div>
+                <div className="text-sm text-gray-600">Adab yang baik mendatangkan berkah</div>
+              </div>
+            </div>
+            
+            <div className="flex items-center gap-3 p-4 bg-white/80 rounded-xl border border-green-200">
+              <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center text-green-600 font-bold">
+                3
+              </div>
+              <div>
+                <div className="font-semibold text-gray-900">Kenyamanan Bersama</div>
+                <div className="text-sm text-gray-600">Menghormati hak peserta lain</div>
+              </div>
+            </div>
+          </div>
+>>>>>>> f00b6075a64eec3f66e9b4ffd7eeef638b9a40dc
         </div>
       </div>
 
@@ -130,7 +212,11 @@ const RulesTab: React.FC = () => {
       <div className="text-center">
         <div className="inline-flex items-center gap-2 bg-amber-100 text-amber-600 px-4 py-2 rounded-full text-sm font-semibold">
           <FaHeart className="w-4 h-4" />
+<<<<<<< HEAD
           <span>Mari bersama jaga kenyamanan bersama</span>
+=======
+          <span>Mari bersama jaga kehormatan majelis ilmu</span>
+>>>>>>> f00b6075a64eec3f66e9b4ffd7eeef638b9a40dc
         </div>
       </div>
     </div>

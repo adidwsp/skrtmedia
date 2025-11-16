@@ -32,7 +32,11 @@ const ContactFooter: React.FC = () => {
               href={`https://wa.me/${MALE_CONTACT}`}
               target="_blank"
               rel="noopener noreferrer"
+<<<<<<< HEAD
               className="flex items-center justify-center text-xs xs:text-sm sm:text-md lg:text-md gap-2 w-full bg-green-600 hover:bg-green-700 text-white py-3 px-4 rounded-xl font-semibold transition-colors"
+=======
+              className="flex items-center justify-center text-xs xs:text-sm sm:text-md lg:text-lg gap-2 w-full bg-green-600 hover:bg-green-700 text-white py-3 px-4 rounded-xl font-semibold transition-colors"
+>>>>>>> f00b6075a64eec3f66e9b4ffd7eeef638b9a40dc
             >
               <FaWhatsapp className="w-5 h-5" />
               Hubungi via WhatsApp
@@ -54,7 +58,11 @@ const ContactFooter: React.FC = () => {
               href={`https://wa.me/${FEMALE_CONTACT}`}
               target="_blank"
               rel="noopener noreferrer"
+<<<<<<< HEAD
               className="flex items-center text-xs xs:text-sm sm:text-md lg:text-md justify-center gap-2 w-full bg-green-600 hover:bg-green-700 text-white py-3 px-4 rounded-xl font-semibold transition-colors"
+=======
+              className="flex items-center text-xs xs:text-sm sm:text-md lg:text-lg justify-center gap-2 w-full bg-green-600 hover:bg-green-700 text-white py-3 px-4 rounded-xl font-semibold transition-colors"
+>>>>>>> f00b6075a64eec3f66e9b4ffd7eeef638b9a40dc
             >
               <FaWhatsapp className="w-5 h-5" />
               Hubungi via WhatsApp
