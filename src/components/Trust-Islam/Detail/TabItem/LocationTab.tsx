@@ -88,11 +88,7 @@ const LocationTab: React.FC<LocationTabProps> = ({ setShowForm }) => {
         </div>
         <div className="p-4 bg-gray-50 border-t border-gray-200">
           <p className="text-sm text-gray-600 text-center">
-<<<<<<< HEAD
             📍 Waroeng Desa (Wardes), Karawang - Tempat yang nyaman untuk belajar dan silaturahmi
-=======
-            📍 Warung Desa (Wardes), Karawang - Tempat yang nyaman untuk belajar dan silaturahmi
->>>>>>> f00b6075a64eec3f66e9b4ffd7eeef638b9a40dc
           </p>
         </div>
       </div>
@@ -102,11 +98,7 @@ const LocationTab: React.FC<LocationTabProps> = ({ setShowForm }) => {
       >
         <button 
           onClick={() => setShowForm(true)} 
-<<<<<<< HEAD
           className="bg-gradient-to-r from-blue-600 to-indigo-500 hover:from-blue-700 hover:to-blue-700 text-white font-bold py-4 px-8 rounded-2xl text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 inline-flex items-center gap-2"
-=======
-          className="bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-green-700 text-white font-bold py-4 px-8 rounded-2xl text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 inline-flex items-center gap-2"
->>>>>>> f00b6075a64eec3f66e9b4ffd7eeef638b9a40dc
         >
           <HiLocationMarker className="w-5 h-5" />
           Daftar Sekarang
