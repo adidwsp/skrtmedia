@@ -122,10 +122,10 @@ const Beranda = ({ center = true }) => {
           
           
           {/* Sponsor & Media Partner Section */}
-          <div className="flex mt-10 mx-auto px-4 justify-center gap-12 sm:gap-20 md:gap-32 lg:gap-40 flex-wrap">
+          <div className="flex mt-10 mx-auto px-4 justify-center gap-3 sm:gap-20 md:gap-32 lg:gap-40 flex-wrap">
             {/* Sponsor Section */}
-            <div className="mb-6">
-              <div className="flex items-center justify-center gap-2 mb-3">
+            <div className="mb-0">
+              <div className="flex items-center justify-center gap-2 mb-0">
                 <FaHandHoldingHeart className="w-4 h-4 text-blue-600" />
                 <span className="text-xs font-semibold text-gray-600 uppercase tracking-wide">Sponsored by</span>
               </div>
@@ -155,7 +155,7 @@ const Beranda = ({ center = true }) => {
 
             {/* Media Partner Section */}
             <div>
-              <div className="flex items-center justify-center gap-2 mb-3">
+              <div className="flex items-center justify-center gap-2 mb-0">
                 <FaMicrophone className="w-4 h-4 text-purple-600" />
                 <span className="text-xs font-semibold text-gray-600 uppercase tracking-wide">Media Partner</span>
               </div>
