@@ -4,7 +4,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { FaHome, FaSearch, FaTicketAlt, FaArrowLeft, FaWhatsapp, FaCopy, FaBars } from "react-icons/fa";
+import { FaHome, FaSearch, FaTicketAlt, FaArrowLeft, FaWhatsapp, FaCopy, FaBars, FaEye } from "react-icons/fa";
 import TicketCard from "@/components/Trust-Islam/Ticket/TicketCard";
 import { createClient } from "@/utils/supabase/client";
 import Footer from "@/components/Trust-Islam/Footer";
@@ -214,6 +214,15 @@ const TicketsPage: React.FC = () => {
                   <div className="flex-1">
                     <h2 className="text-xl sm:text-2xl font-bold mb-1 sm:mb-2">Tiket Ditemukan!</h2>
                     <p className="text-green-100 text-sm sm:text-base">Berikut detail tiket Anda</p>
+                    <a
+                      href={`/trust-islam/tickets/${encodeURIComponent(ticketRow.ticket_number)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center mt-2 gap-2 bg-blue-500 hover:bg-blue-600 text-white py-3 px-4 rounded-xl font-medium transition-colors text-center"
+                    >
+                      <FaEye className="w-5 h-5" />
+                      Buka Tiket
+                    </a>
                   </div>
                   <div className="flex items-center gap-2 sm:gap-3">
                     <div className="bg-white/20 px-3 py-2 sm:px-4 sm:py-2 rounded-lg">

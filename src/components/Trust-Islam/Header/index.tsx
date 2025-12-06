@@ -163,16 +163,18 @@ const Header = () => {
                   </ul>
                 </nav>
               </div>
-              <div className="flex items-center justify-end pr-16 lg:pr-0">
+              {/* <div className="flex items-center justify-end pr-16 lg:pr-0"> */}
                 {/* <Link
-                  href="/signin"
-                  className="text-dark hidden px-7 py-3 text-base font-medium hover:opacity-70 md:block dark:text-white"
-                >
-                  Sign In
-                </Link> */}
-                <Link
                   href="/trust-islam/ticket"
                   className="ease-in-up shadow-btn hover:shadow-btn-hover bg-primary hover:bg-primary/90 hidden rounded-xs px-8 py-3 text-base font-medium text-white transition duration-300 md:block md:px-9 lg:px-6 xl:px-9"
+                >
+                  Tiket Anda
+                </Link>
+              </div> */}
+              <div className="flex items-center justify-end pr-16 lg:pr-0">
+                <Link 
+                  href="/trust-islam/ticket" 
+                  className="ease-in-up bg-gradient-to-r from-[#0EA5E9] to-[#0369A1] text-white font-bold hidden py-4 px-8 rounded-2xl text-lg shadow-2xl hover:shadow-3xl transform hover:-translate-y-1 transition-all duration-300 hover:scale-105  md:block md:px-9 lg:px-6 xl:px-9"
                 >
                   Tiket Anda
                 </Link>

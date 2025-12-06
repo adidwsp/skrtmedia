@@ -5,10 +5,11 @@ import { FaHandHoldingHeart, FaMicrophone } from "react-icons/fa";
 const Beranda = ({ center = true }) => {
   // Data sponsor dan media partner
   const sponsors = [
-    { id: 1, logo: "/images/sponsors/sponsor1.png", name: "PT. Solusi Muslim" },
-    { id: 2, logo: "/images/sponsors/sponsor2.png", name: "Baitul Maal" },
-    { id: 3, logo: "/images/sponsors/sponsor3.png", name: "Muslim Store" },
-    { id: 4, logo: "/images/sponsors/sponsor4.png", name: "Islamic Finance" }
+    { id: 1, logo: "/images/component/kuwehku.png", name: "Kuwehku" },
+    { id: 2, logo: "/images/component/alifah.png", name: "Alifah Cllinic" },
+    { id: 3, logo: "/images/component/alyafa.png", name: "Alyafa Salon" },
+    { id: 4, logo: "/images/component/senja.png", name: "Senja Kosmetik" },
+    { id: 5, logo: "/images/component/dhinda.png", name: "Dhinda Hijab" }
   ];
 
   const mediaPartners = [
@@ -121,7 +122,7 @@ const Beranda = ({ center = true }) => {
           
           
           {/* Sponsor & Media Partner Section */}
-          <div className="mt-24 max-w-4xl mx-auto px-4">
+          <div className="flex mt-10 mx-auto px-4 justify-center gap-12 sm:gap-20 md:gap-32 lg:gap-40 flex-wrap">
             {/* Sponsor Section */}
             <div className="mb-6">
               <div className="flex items-center justify-center gap-2 mb-3">
@@ -129,26 +130,26 @@ const Beranda = ({ center = true }) => {
                 <span className="text-xs font-semibold text-gray-600 uppercase tracking-wide">Sponsored by</span>
               </div>
               <div className="flex justify-center items-center flex-wrap gap-4 sm:gap-6">
-                {/* {sponsors.map((sponsor) => (
+                {sponsors.map((sponsor) => (
                   <div 
                     key={sponsor.id}
-                    className="bg-white/80 backdrop-blur-sm rounded-xl p-3 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                    className=""
                   >
-                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-blue-100 to-cyan-100 rounded-lg flex items-center justify-center"> */}
+                    <div className="">
                       {/* Placeholder untuk logo sponsor */}
                       {/* <div className="text-blue-600 font-bold text-xs text-center leading-tight">
                         {sponsor.name.split(' ')[0]}
                       </div> */}
-                      {/* <Image 
+                      <Image 
                         src={sponsor.logo} 
                         alt={sponsor.name}
                         width={64}
                         height={64}
                         className="object-contain"
-                      /> */}
-                    {/* </div>
+                      />
+                    </div>
                   </div>
-                ))} */}
+                ))}
               </div>
             </div>
 
@@ -186,7 +187,7 @@ const Beranda = ({ center = true }) => {
         {/* Scroll Indicator */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
           <div className="w-6 h-10 border-2 border-[#0EA5E9] rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-[#0EA5E9] rounded-full mt-2"></div>
+            <div className="w-1 h-3 bg-[#0EA5E9] rounded-full"></div>
           </div>
         </div>
       </section>
