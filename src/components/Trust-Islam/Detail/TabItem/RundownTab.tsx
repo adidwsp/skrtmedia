@@ -49,7 +49,7 @@ const RundownTab: React.FC = () => {
     },
     {
       time: "17:10 - 17:30",
-      title: "Q & A Session",
+      title: "Q&A Session",
       description: "Tanya jawab dengan pemateri",
       icon: FaQuestion,
       color: "green"

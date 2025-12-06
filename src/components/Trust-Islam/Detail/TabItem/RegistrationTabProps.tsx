@@ -161,10 +161,10 @@ const RegistrationTab: React.FC<RegistrationTabProps> = ({ setShowForm }) => {
       {/* Quick Stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
         {[
-          { label: "Kuota Tersisa", value: "40%", color: "orange" },
-          { label: "Pendaftar Hari Ini", value: "12", color: "green" },
+          { label: "Kuota Tersisa", value: "18%", color: "red" },
+          { label: "Total Pendaftar", value: "82", color: "green" },
           { label: "Total Kuota", value: "100", color: "blue" },
-          { label: "Waktu Tersisa", value: "7 Hari", color: "purple" }
+          { label: "Waktu Tersisa", value: "0 Hari", color: "purple" }
         ].map((stat, index) => (
           <div 
             key={index}

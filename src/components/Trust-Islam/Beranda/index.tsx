@@ -21,8 +21,8 @@ const Beranda = ({ center = true }) => {
 
   return (
     <>
-      {/* Beranda */}
-      <section id="beranda" className="min-h-screen flex items-center relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-cyan-50">
+      {/* Beranda min-h-screen */}
+      <section id="beranda" className="h-250 flex items-center relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-cyan-50">
         
         {/* Background Elements dengan Animasi */}
         <div className="absolute inset-0 overflow-hidden">
