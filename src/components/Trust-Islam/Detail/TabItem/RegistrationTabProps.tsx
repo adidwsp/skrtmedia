@@ -1,6 +1,6 @@
 // components/tabs/RegistrationTab.tsx
 import React from 'react';
-import { HiClipboardList } from 'react-icons/hi';
+import { HiClipboardList, HiLockClosed } from 'react-icons/hi';
 import { FaCheckCircle, FaGift, FaUsers, FaBookOpen } from 'react-icons/fa';
 
 interface RegistrationTabProps {
@@ -141,11 +141,12 @@ const RegistrationTab: React.FC<RegistrationTabProps> = ({ setShowForm }) => {
 
             {/* CTA Button */}
             <button 
-              onClick={() => setShowForm(true)}
-              className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
+              // onClick={() => setShowForm(true)}
+              // className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
+              className="w-full bg-neutral-600 text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
             >
-              <HiClipboardList className="w-5 h-5" />
-              <span>Order Tiket Sekarang</span>
+              <HiLockClosed className="w-5 h-5" />
+              <span>Pendaftaran Ditutup</span>
             </button>
 
             {/* Additional Info */}
@@ -161,8 +162,8 @@ const RegistrationTab: React.FC<RegistrationTabProps> = ({ setShowForm }) => {
       {/* Quick Stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
         {[
-          { label: "Kuota Tersisa", value: "18%", color: "red" },
-          { label: "Total Pendaftar", value: "82", color: "green" },
+          { label: "Kuota Tersisa", value: "9%", color: "red" },
+          { label: "Total Pendaftar", value: "91", color: "green" },
           { label: "Total Kuota", value: "100", color: "blue" },
           { label: "Waktu Tersisa", value: "0 Hari", color: "purple" }
         ].map((stat, index) => (

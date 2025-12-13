@@ -1,6 +1,6 @@
 // components/tabs/LocationTab.tsx
 import React from 'react';
-import { HiLocationMarker, HiUsers } from 'react-icons/hi';
+import { HiArchive, HiLocationMarker, HiLockClosed, HiUsers } from 'react-icons/hi';
 import { FaCalendar, FaClock, FaMapMarkerAlt } from 'react-icons/fa';
 
 interface LocationTabProps {
@@ -96,12 +96,12 @@ const LocationTab: React.FC<LocationTabProps> = ({ setShowForm }) => {
       {/* CTA */}
       <div className="text-center"
       >
-        <button 
-          onClick={() => setShowForm(true)} 
-          className="bg-gradient-to-r from-blue-600 to-indigo-500 hover:from-blue-700 hover:to-blue-700 text-white font-bold py-4 px-8 rounded-2xl text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 inline-flex items-center gap-2"
+        <button
+          // className="bg-gradient-to-r from--600 to-red-500 hover:from-red-700 hover:to-blue-700 text-white font-bold py-4 px-8 rounded-2xl text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 inline-flex items-center gap-2"
+          className="bg-neutral-700 text-white font-bold py-4 px-8 rounded-2xl text-lg inline-flex items-center gap-2"
         >
-          <HiLocationMarker className="w-5 h-5" />
-          Daftar Sekarang
+          <HiLockClosed className="w-5 h-5" />
+          Pendaftaran Ditutup
         </button>
       </div>
     </div>
