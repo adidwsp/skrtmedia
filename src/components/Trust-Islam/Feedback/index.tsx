@@ -143,30 +143,62 @@ export default function TrustIslamFeedback() {
   };
 
   // --- Submit Kritik & Saran ---
+  // const handleSubmitCriticism = async () => {
+  //   if (!formData.criticism?.trim() && !formData.suggestion?.trim()) {
+  //     alert("Silakan isi kritik atau saran terlebih dahulu, atau klik 'Lewati'");
+  //     return;
+  //   }
+
+  //   setLoading(true);
+    
+  //   try {
+  //     // Update data dengan kritik dan saran
+  //     if (responseId) {
+  //       await supabase
+  //         .from("feedback")
+  //         .update({ 
+  //           criticism: formData.criticism,
+  //           suggestion: formData.suggestion
+  //         })
+  //         .eq("id", responseId);
+  //     }
+      
+  //     setLoading(false);
+  //     handleNext(); // Lanjut ke halaman hasil
+  //   } catch (error) {
+  //     console.error("Error saving criticism:", error);
+  //     setLoading(false);
+  //   }
+  // };
   const handleSubmitCriticism = async () => {
-    if (!formData.criticism?.trim() && !formData.suggestion?.trim()) {
-      alert("Silakan isi kritik atau saran terlebih dahulu, atau klik 'Lewati'");
+    if (!responseId) {
+      alert("Error: Data tidak ditemukan. Silakan mulai dari awal.");
       return;
     }
 
     setLoading(true);
     
     try {
-      // Update data dengan kritik dan saran
-      if (responseId) {
-        await supabase
-          .from("feedback")
-          .update({ 
-            criticism: formData.criticism,
-            suggestion: formData.suggestion
-          })
-          .eq("id", responseId);
-      }
+      // Gunakan upsert untuk update atau create
+      const { data, error } = await supabase
+        .from("feedback")
+        .upsert({
+          id: responseId, // Pastikan ID ada
+          criticism: formData.criticism,
+          suggestion: formData.suggestion,
+          rating_overall: formData.rating_overall,
+          updated_at: new Date().toISOString() // Tambahkan timestamp
+        })
+        .select()
+        .single();
+
+      if (error) throw error;
       
       setLoading(false);
-      handleNext(); // Lanjut ke halaman hasil
+      handleNext();
     } catch (error) {
-      console.error("Error saving criticism:", error);
+      console.error("Error:", error);
+      alert("Gagal menyimpan. Silakan coba lagi.");
       setLoading(false);
     }
   };
