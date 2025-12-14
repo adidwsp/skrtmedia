@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { createClient } from "@supabase/supabase-js";
 import { 
@@ -932,12 +933,22 @@ export default function TrustIslamFeedback() {
                       <div className="font-handwriting" style={{ fontFamily: '"Caveat", cursive' }}>
                         "{note.sticky_content}"
                       </div>
-                      <div className="text-xs text-emerald-600 mt-2 text-right">— anonim</div>
+                      {/* <div className="text-xs text-emerald-600 mt-2 text-right">— anonim</div> */}
                     </motion.div>
                   ))}
                 </div>
               </div>
             </div>
+
+            {/* Tombol untuk membuka halaman terpisah */}
+              <Link 
+                href="/trust-islam/feedback/wall-of-hope"
+                target="_blank"
+                className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white px-6 py-3 rounded-xl font-bold hover:shadow-lg transition-all"
+              >
+                <Sparkles className="w-4 h-4" />
+                Kunjungi Wall of Hope
+              </Link>
 
             {/* Pesan Transisi */}
             <motion.div
